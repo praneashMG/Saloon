@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/fav.png" type="image/jpeg">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>User Dashboard | TRIMZO</title>
+    <script src="tailwind.js"></script>
+    <style>
+        /* --- Refined Premium Green & Rich Brown Palette --- */
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #5C4033; 
+            --color-secondary-text: #5C4033; /* Neat Rich Brown */
+            --color-accent: #E6B325; /* Lawn Green */
+            --color-accent-light: #5C4033; /* Rich Brown */
+            --color-border: #E5E7EB; 
+            --color-hover: #FFF8E6; 
+            --color-footer-bg: #5C4033;
+            --color-footer-text: #EAEAEA; 
+        }
+        html[data-theme='dark'] {
+            --color-background: #000000;
+            --color-primary-text: #FFFFFF;
+            --color-secondary-text: #D7CCC8;
+            --color-accent: #E6B325; 
+            --color-accent-light: #BCAAA4; 
+            --color-border: #374151; 
+            --color-hover: #2B1D16;
+            --color-footer-bg: #000000;
+            --color-footer-text: #FFFFFF;
+        }
+        
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-accent-light { color: var(--color-accent-light); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .border-border { border-color: var(--color-border); }
+
+        /* ── Typography Weight System ── */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 500 !important;
+        }
+        p, .text-secondary-text {
+            font-weight: 400 !important;
+        }
+
+        /* Rich Gradient */
+        .bg-custom-gradient {
+            background: linear-gradient(135deg, #E6B325 0%, #5C4033 100%);
+        }
+
+        #main-footer {
+            background-color: var(--color-footer-bg);
+            color: var(--color-footer-text);
+        }
+        #main-footer .footer-heading {
+            color: #E6B325 !important; /* Elegant Green Heading */
+        }
+        #main-footer .footer-link:hover {
+            color: #BCAAA4;
+            padding-left: 4px;
+            transition: all 0.2s ease;
+        }
+
+        /* Nav Link Underline */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* DROPDOWN */
+        .dropdown-wrapper { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+            display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover {
+            background-color: var(--color-hover);
+            color: var(--color-accent);
+            padding-left: 1.25rem;
+        }
+
+        @media (max-width: 1024px) {
+            .dropdown-menu { position: static; display: none; opacity: 1; visibility: visible; transform: none; box-shadow: none; }
+            .dropdown-wrapper:hover .dropdown-menu { display: block; }
+        }
+
+        /* ── Canonical Button System ── */
+        .btn-primary, .book-btn {
+            background: linear-gradient(135deg, #E6B325 0%, #5C4033 100%);
+            color: #FFFFFF !important;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary:hover, .book-btn:hover {
+            opacity: 0.88;
+            transform: scale(1.04);
+            box-shadow: 0 6px 18px rgba(230,179,37,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: #FFFFFF !important;
+            box-shadow: 0 4px 12px rgba(230,179,37,0.25);
+        }
+        html[data-theme='dark'] .btn-outline {
+            color: #E6B325;
+            border-color: #E6B325;
+        }
+        html[data-theme='dark'] .btn-outline:hover {
+            background: #E6B325;
+            color: #000;
+        }
+        .btn-cta-white {
+            background: white;
+            color: #E6B325;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-cta-white:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+
+<body class="antialiased bg-background">
+
+    <!-- TOP HEADER -->
+    <header class="sticky top-0 z-50 transition-colors duration-300 shadow-xl border-b border-border bg-background" id="main-header">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between h-[70px]">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
+                <div class="text-2xl font-serif font-extrabold tracking-tight flex flex-col justify-center">    
+                    <span style="color: #E6B325;">TRIMZO</span>
+                </div>
+            </a>
+
+            <div class="hidden xl:flex items-center space-x-6">
+                <div class="flex space-x-6 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium">
+                    <div class="dropdown-wrapper">
+                        <button class="nav-link flex items-center" id="home-dropdown-btn">
+                            Home
+                            <svg class="w-3 h-3 ml-1 relative top-[2.5px] transition-transform duration-200 text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="index.html">Home 1</a>
+                            <a href="home2.html">Home 2</a>
+                        </div>
+                    </div>
+<a href="about.html" class="nav-link">About Us</a>
+<a href="services.html" class="nav-link">Services</a>
+<a href="gallery.html" class="nav-link">Gallery</a>
+<a href="barbers.html" class="nav-link">Our Barbers</a>
+<a href="products.html" class="nav-link">Products</a>
+<a href="contact.html" class="nav-link">Contact</a>
+                </div>
+
+                <div class="w-px h-6 bg-border mx-3"></div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full transition duration-200">
+                        <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                    <button id="lang-icon" class="text-primary-text hover:text-accent p-1.5 rounded-full transition duration-200">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+</svg>                    </button>
+                    <div class="flex items-center gap-3 ml-3">
+                        <a href="login.html" class="btn-outline px-6 py-2 rounded-xl font-bold shadow-md">Login</a>
+                        <a href="signup.html" class="book-btn px-6 py-2.5 rounded-xl font-bold shadow-md">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="xl:hidden flex items-center">
+                <button id="mobile-menu-open" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button>
+            </div>
+        </nav>
+    </header>
+
+    <div id="mobile-overlay" class="lg:hidden"></div>
+
+    <div class="flex min-h-screen pt-[73px]">
+
+            <!-- MEMBER SIDEBAR -->
+            <aside id="sidebar"
+                class="fixed top-0 lg:top-[73px] left-0 w-72 lg:w-64 h-full lg:h-[calc(100vh-73px)] z-[60] transform -translate-x-full lg:translate-x-0 transition-transform duration-300 bg-background border-r border-border overflow-y-auto shrink-0">
+                <div class="p-5">
+                    <div class="flex lg:hidden justify-between items-center mb-6">
+                        <span class="font-bold text-accent">Member Menu</span>
+                        <button id="close-sidebar" class="p-2 hover:bg-hover rounded-lg"><svg class="w-5 h-5"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg></button>
+                    </div>
+                    <nav class="flex flex-col gap-1">
+                        <p class="text-xs uppercase tracking-wider text-secondary-text px-3 mb-2">My Cellar</p>
+                        <a href="#" data-section="overview" class="sidebar-link active"><i
+                                class="fa-solid fa-house-chimney w-5"></i><span>Dashboard</span></a>
+                        <a href="#" data-section="shipments" class="sidebar-link"><i
+                                class="fa-solid fa-box-open w-5"></i><span>My Shipments</span><span
+                                class="ml-auto text-xs bg-accent/20 px-2 rounded-full"></span></a>
+
+                        <a href="#" data-section="orders" class="sidebar-link"><i
+                                class="fa-solid fa-receipt w-5"></i><span>Order History</span></a>
+
+                        <a href="#" data-section="saved" class="sidebar-link"><i
+                                class="fa-solid fa-gem w-5"></i><span>Saved Services</span></a>
+
+                        <a href="#" data-section="tours" class="sidebar-link"><i
+                                class="fa-solid fa-calendar-check w-5"></i><span>Private Viewings</span></a>
+                        <a href="#" data-section="subscription" class="sidebar-link"><i
+                                class="fa-solid fa-wine-bottle w-5"></i><span>Manage Subscription</span></a>
+                        <a href="#" id="logoutBtn"
+                            class="sidebar-link mt-6 border-t border-border pt-4 text-red-600 hover:text-white hover:bg-red-600"><i
+                                class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- MAIN PANEL -->
+            <main class="flex-1 min-w-0 space-y-6 lg:ml-64 px-4 sm:px-6 lg:px-8 py-6">
+                <!-- DASHBOARD OVERVIEW -->
+                <div id="overview" class="admin-section">
+                    <div class="mb-8">
+                        <h1 class="text-3xl font-serif font-bold text-primary-text">Welcome back, Eleanor Weiss!</h1>
+                        <p class="text-secondary-text mt-1">Here is a summary of your private collection and vault activity.</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="dashboard-card p-6">
+                            <div class="flex justify-between">
+                                <div>
+                                    <p class="text-secondary-text text-sm">VIP Status</p>
+                                    <p class="text-2xl font-black mt-1">Barbershop Barber</p>
+                                    <p class="text-xs text-emerald-600 mt-2">✓ Premium bidding access</p>
+                                </div>
+                                <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
+                                    <i class="fa-solid fa-crown text-2xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashboard-card p-6">
+                            <div class="flex justify-between">
+                                <div>
+                                    <p class="text-secondary-text text-sm">Next Acquisition</p>
+                                    <p class="text-2xl font-black mt-1">May 2026</p>
+                                    <p class="text-xs text-accent mt-2">Est. delivery: May 28-30</p>
+                                </div>
+                                <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
+                                    <i class="fa-solid fa-truck-fast text-2xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashboard-card p-6">
+                            <div class="flex justify-between">
+                                <div>
+                                    <p class="text-secondary-text text-sm">Saved Services</p>
+                                    <p class="text-2xl font-black mt-1">12</p>
+                                    <p class="text-xs text-accent mt-2">+3 new premium gems added</p>
+                                </div>
+                                <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
+                                    <i class="fa-solid fa-gem text-2xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current Shipment Progress -->
+                    <div class="dashboard-card p-6 mt-6">
+                        <h3 class="font-bold text-lg mb-2">💎 Acquisition: "Amethyst Geode & Fluorite Cluster"</h3>
+                        <div class="flex justify-between text-sm mb-2"><span>Crating & Securing at Vault</span><span>85%</span></div>
+                        <div class="w-full bg-border rounded-full h-2">
+                            <div class="progress-bar rounded-full w-[85%] bg-accent h-2"></div>
+                        </div>
+                        <p class="text-secondary-text text-sm mt-4">Includes: 1.2-ton Amethyst Geode (barbershop grade), UV-Reactive Fluorite, and digital authentication certificates.</p>
+                        <button class="btn-outline px-5 py-2 rounded-xl text-sm mt-4 font-semibold">Track Secure Freight <i class="fa-solid fa-map-location-dot ml-1"></i></button>
+                    </div>
+
+                    <!-- Recent Saved Specimens Activity -->
+                    <div class="dashboard-card p-6 mt-6">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-bold text-lg">📝 Recently Saved to Vault</h3><a href="#"
+                                data-section="saved" class="text-accent text-sm hover:underline">View all</a>
+                        </div>
+                        <div class="space-y-3 mt-4">
+                            <div class="p-3 bg-hover rounded-xl flex items-center justify-between border border-transparent hover:border-border transition">
+                                <div>
+                                    <p class="font-semibold">Megalodon Tooth (6.5 inch)</p>
+                                    <p class="text-sm text-secondary-text mt-1">"Pristine enamel, sharp serrations. South Carolina."</p>
+                                </div>
+                                <span class="font-bold text-accent bg-accent/10 px-3 py-1 rounded-full text-xs">$4,500</span>
+                            </div>
+                            <div class="p-3 bg-hover rounded-xl flex items-center justify-between border border-transparent hover:border-border transition">
+                                <div>
+                                    <p class="font-semibold">Bismuth Crystal Staircase</p>
+                                    <p class="text-sm text-secondary-text mt-1">"Iridescent oxidation, perfect geometric structure."</p>
+                                </div>
+                                <span class="font-bold text-accent bg-accent/10 px-3 py-1 rounded-full text-xs">$850</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MY QUARTERLY SHIPMENTS (TRACK, MANAGE) -->
+                <div id="shipments" class="admin-section hidden">
+                    <div class="dashboard-card p-6">
+                        <h2 class="text-2xl font-serif font-bold mb-6">📦 Logistics & Freight Tracking</h2>
+                        <div class="space-y-5">
+                            <div class="border border-border rounded-xl p-5 bg-hover">
+                                <div class="flex justify-between flex-wrap border-b border-border pb-3 mb-3">
+                                    <span class="font-bold text-lg">May 2026 - Geode Acquisition</span>
+                                    <span class="bg-emerald-500/10 text-emerald-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">In Transit · May 24</span>
+                                </div>
+                                <p class="text-sm text-secondary-text">Expected delivery: 28 May · Carrier: Brinks Secure Transit #GE2390A</p>
+                                <button class="btn-accent px-4 py-2 rounded-xl text-sm mt-4 font-bold"><i class="fa-solid fa-satellite-dish mr-2"></i> Live GPS tracking</button>
+                            </div>
+                            <div class="border border-border rounded-xl p-5 bg-hover">
+                                <div class="flex justify-between flex-wrap border-b border-border pb-3 mb-3">
+                                    <span class="font-bold text-lg">Feb 2026 - Triceratops Horn Haircut</span>
+                                    <span class="bg-secondary-text/20 text-secondary-text px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Delivered Feb 12</span>
+                                </div>
+                                <p class="text-sm text-secondary-text">Condition: Mint · Includes physical personal consultation document.</p>
+                                <a href="#" class="text-accent text-sm font-bold mt-4 inline-block hover:underline"><i class="fa-solid fa-file-pdf mr-1"></i> Download Digital Certificate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ORDER HISTORY -->
+                <div id="orders" class="admin-section hidden">
+                    <div class="dashboard-card p-6">
+                        <h2 class="text-2xl font-serif font-bold">🧾 Order History</h2>
+                        <p class="mb-4 text-secondary-text">View your past purchases, invoices, and service details.</p>
+                        <div class="border border-border rounded-xl p-4 mt-4 text-center">
+                            <p class="text-secondary-text text-sm">No recent orders to display.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SAVED SPECIMENS -->
+                <div id="saved" class="admin-section hidden">
+                    <div class="dashboard-card p-6">
+                        <h2 class="text-2xl font-serif font-bold">💎 Saved Services</h2>
+                        <p class="mb-4 text-secondary-text">Your premium list of favorite haircuts, minerals, and grooming items.</p>
+                        <div class="border border-border rounded-xl p-4 mt-4 text-center">
+                            <p class="text-secondary-text text-sm">You haven't saved any services yet.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRIVATE VIEWINGS BOOKING -->
+                <div id="tours" class="admin-section hidden">
+                    <div class="dashboard-card p-6">
+                        <h2 class="text-2xl font-serif font-bold">🏛️ Private Gallery Viewings</h2>
+                        <p class="mb-4 text-secondary-text">Schedule an exclusive consultation with our grooming curators.</p>
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="flex-1 bg-hover border border-border rounded-xl p-5">
+                                <h3 class="font-bold text-lg">🎟️ Virtual Exhibition Tour</h3>
+                                <p class="text-sm mt-2 text-secondary-text">High-definition remote viewing of requested services with a barber.</p>
+                                <label class="block mt-4 text-sm font-bold">Select date: <input type="date" class="ml-2 p-1.5 border border-border rounded bg-background w-full mt-2"></label>
+                                <button class="btn-primary w-full mt-4 py-2 rounded-xl text-sm font-bold">Schedule Virtual Tour</button>
+                            </div>
+                            <div class="flex-1 bg-hover border border-border rounded-xl p-5">
+                                <h3 class="font-bold text-lg">🔬 In-Person Appraisal</h3>
+                                <p class="text-sm mt-2 text-secondary-text">Visit our vault for hands-on inspection and excellence verification.</p>
+                                <label class="block mt-4 text-sm font-bold">Party size: 
+                                    <select class="ml-2 p-1.5 border border-border rounded bg-background w-full mt-2">
+                                        <option>1-2 people</option>
+                                        <option>3-4 people</option>
+                                    </select>
+                                </label>
+                                <button class="btn-primary w-full mt-4 py-2 rounded-xl text-sm font-bold">Request Vault Access</button>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center text-sm text-accent bg-accent/10 py-3 rounded-xl font-bold">
+                            *VIP Curators receive priority booking and complimentary service on acquired items.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MANAGE SUBSCRIPTION / PREFERENCES -->
+                <div id="subscription" class="admin-section hidden">
+                    <div class="dashboard-card p-6">
+                        <h2 class="text-2xl font-serif font-bold">⚙️ My Client Profile</h2>
+                        <div class="grid md:grid-cols-2 gap-6 mt-5">
+                            <div class="border border-border p-5 rounded-xl bg-hover">
+                                <h3 class="font-bold text-lg">VIP Status</h3>
+                                <p class="text-accent text-xl font-bold mt-1">Barbershop Barber Tier</p>
+                                <p class="text-secondary-text text-sm mt-2">Includes early access to premium auctions, dedicated support, and freight insurance.</p>
+                                <button class="btn-outline w-full mt-4 py-2 text-sm rounded-xl font-bold">Upgrade Tier</button>
+                            </div>
+                            <div class="border border-border p-5 rounded-xl bg-hover">
+                                <h3 class="font-bold text-lg">Shipping Logistics</h3>
+                                <p class="text-secondary-text text-sm mt-2">1200 Grooming Ave, Suite 400<br/>Denver, CO 80202</p>
+                                <button class="text-accent text-sm mt-2 font-bold hover:underline">Update secure address</button>
+                                
+                                <h3 class="font-bold mt-6 text-lg">Acquisition Preferences</h3>
+                                <p class="text-secondary-text text-sm mt-2">Styling, Premium Gems, Classic Teeth</p>
+                                <button class="text-accent text-sm mt-2 font-bold hover:underline">Edit client profile</button>
+                            </div>
+                        </div>
+                        <div class="mt-6 p-5 border border-border bg-background rounded-xl flex flex-col sm:flex-row justify-between items-center gap-4">
+                            <div>
+                                <p class="font-bold text-lg">Next Retainer Billing: August 1, 2026</p>
+                                <p class="text-sm text-secondary-text mt-1">Annual VIP Retainer: $1,250/year</p>
+                            </div>
+                            <button class="btn-primary px-6 py-3 rounded-xl font-bold whitespace-nowrap">Manage Billing</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="mobile-menu-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300">
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <div id="drawer-content" class="absolute top-0 left-0 right-0 bg-background rounded-b-2xl shadow-2xl p-6 xl:hidden max-h-[85vh] overflow-y-auto transform translate-y-[-100%] transition-transform duration-300 ease-out">
+            <div class="flex justify-between items-center pb-4 border-b border-border">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
+                    <div class="text-2xl font-serif font-extrabold tracking-wide flex flex-col justify-center">
+                        <span style="color: #E6B325;">TRIMZO</span>
+                    </div>
+                </a>
+                <button id="mobile-menu-close" class="text-primary-text hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2 py-4">
+                <div>
+                    <button class="block text-primary-text font-semibold text-lg py-2 w-full text-left flex justify-between items-center" id="mobile-homes-toggle">
+                        Home <svg class="w-4 h-4 transform transition-transform duration-200 text-primary-text" id="homes-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="mobile-homes-menu" class="hidden pl-4 flex flex-col space-y-1 mt-1 border-l-2 border-border">
+                        <a href="index.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 1</a>
+                        <a href="home2.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 2</a>
+                    </div>
+                </div>
+<a href="about.html" class="block text-primary-text font-semibold text-lg py-2">About Us</a>
+<a href="services.html" class="block text-primary-text font-semibold text-lg py-2">Services</a>
+<a href="gallery.html" class="block text-primary-text font-semibold text-lg py-2">Gallery</a>
+<a href="barbers.html" class="block text-primary-text font-semibold text-lg py-2">Our Barbers</a>
+<a href="products.html" class="block text-primary-text font-semibold text-lg py-2">Products</a>
+<a href="contact.html" class="block text-primary-text font-semibold text-lg py-2">Contact</a>
+            </nav>
+            <div class="pt-4 border-t border-border mt-4 flex justify-around items-center">
+                <button id="mobile-lang-icon-drawer" class="flex flex-col items-center"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+</svg><span class="text-xs mt-1 text-secondary-text">RTL</span></button>
+                <button id="drawer-theme-toggle" class="flex flex-col items-center">
+                    <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    <span class="text-xs mt-1 text-secondary-text">Theme</span>
+                </button>
+            </div>
+            <div class="flex mt-5 gap-5 w-full">
+                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
+                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <footer id="main-footer" class="pt-20 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-gray-800">
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="flex items-center gap-3 mb-4">
+                        <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
+                        <div class="text-2xl font-serif font-extrabold tracking-tight flex flex-col justify-center">    
+                            <span style="color: #E6B325;">TRIMZO</span>
+                        </div>
+                    </a>
+<p class="text-lg leading-relaxed max-w-sm !text-white-400">
+Providing premium grooming services, classic haircuts, and modern styling for the modern gentleman.</p>                    <div class="flex gap-6 mt-10">
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Our Services</h4>
+                   <ul class="space-y-4">
+    <li><a href="services.html" class="footer-link">Classic Haircuts</a></li>
+    <li><a href="services.html" class="footer-link">Beard Trimming</a></li>
+    <li><a href="services.html" class="footer-link">Hot Towel Shave</a></li>
+    <li><a href="services.html" class="footer-link">Hair Styling</a></li>
+</ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="gallery.html" class="footer-link">Gallery</a></li>
+                        <li><a href="barbers.html" class="footer-link">Our Barbers</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Newsletter</h4>
+                    <div class="flex flex-col space-y-4">
+                        <input type="email" placeholder="Email address" class="p-4 text-sm rounded-xl bg-gray-900 border border-gray-800 focus:outline-none text-white" />
+                        <button class="btn-primary font-bold py-3 rounded-xl">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="py-10 text-center text-white-500 text-sm">© 2026 TRIMZO. All rights reserved.</div>
+        </div>
+    </footer>
+            </main>
+        </div>
+
+    <script>
+        (function () {
+            const html = document.documentElement;
+            function setTheme(theme) { html.setAttribute('data-theme', theme); localStorage.setItem('theme', theme); document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark')); document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light')); }
+            setTheme(localStorage.getItem('theme') || 'light');
+            document.getElementById('theme-toggle')?.addEventListener('click', () => setTheme(html.getAttribute('data-theme') === 'light' ? 'dark' : 'light'));
+            function setDirection(dir) { html.setAttribute('dir', dir); localStorage.setItem('language', dir === 'rtl' ? 'ar' : 'en'); }
+            setDirection(localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+            document.getElementById('lang-toggle')?.addEventListener('click', () => setDirection(html.getAttribute('dir') === 'ltr' ? 'rtl' : 'ltr'));
+
+            const menuToggle = document.getElementById('mobile-menu-toggle'), closeSidebar = document.getElementById('close-sidebar'), sidebar = document.getElementById('sidebar'), overlay = document.getElementById('mobile-overlay');
+            function toggleMobile(open) { sidebar.classList.toggle('-translate-x-full', !open); overlay.classList.toggle('active', open); document.body.style.overflow = open ? 'hidden' : ''; }
+            menuToggle?.addEventListener('click', () => toggleMobile(true)); closeSidebar?.addEventListener('click', () => toggleMobile(false)); overlay?.addEventListener('click', () => toggleMobile(false));
+
+            const sections = ['overview', 'shipments', 'orders', 'saved', 'tours', 'subscription'];
+            const links = document.querySelectorAll('.sidebar-link');
+            window.activateMemberSection = function (sectionId) { sections.forEach(id => document.getElementById(id)?.classList.add('hidden')); document.getElementById(sectionId)?.classList.remove('hidden'); links.forEach(link => { link.classList.remove('active'); if (link.dataset.section === sectionId) link.classList.add('active'); }); if (window.innerWidth < 1024) toggleMobile(false); };
+            links.forEach(link => { if (link.dataset.section) link.addEventListener('click', (e) => { e.preventDefault(); activateMemberSection(link.dataset.section); }); });
+            document.getElementById("logoutBtn")?.addEventListener("click", function (e) { e.preventDefault(); localStorage.clear(); sessionStorage.clear(); window.location.href = "login.html"; });
+
+        })();
+    </script>
+</body>
+
+</html>

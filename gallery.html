@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/fav.png" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Haircuts | TRIMZO</title>
+
+    <script src="tailwind.js"></script>
+    <style>
+        /* Active filter button: keep text white even on hover */
+        .filter-btn.active {
+            background-color: #E6B325 !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            border: none !important;
+        }
+        .filter-btn.active:hover {
+            color: #FFFFFF !important;
+        }
+        /* --- Refined Premium Green & Rich Brown Palette --- */
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #5C4033; 
+            --color-secondary-text: #5C4033; /* Neat Rich Brown */
+            --color-accent: #E6B325; /* Lawn Green */
+            --color-accent-light: #5C4033; /* Rich Brown */
+            --color-border: #E5E7EB; 
+            --color-hover: #FFF8E6; 
+            --color-footer-bg: #5C4033;
+            --color-footer-text: #EAEAEA; 
+        }
+        html[data-theme='dark'] {
+            --color-background: #000000;
+            --color-primary-text: #FFFFFF;
+            --color-secondary-text: #D7CCC8;
+            --color-accent: #E6B325; 
+            --color-accent-light: #BCAAA4; 
+            --color-border: #374151; 
+            --color-hover: #2B1D16;
+            --color-footer-bg: #000000;
+            --color-footer-text: #FFFFFF;
+        }
+        
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-accent-light { color: var(--color-accent-light); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .border-border { border-color: var(--color-border); }
+
+        /* ── Typography Weight System ── */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 500 !important;
+        }
+        p, .text-secondary-text {
+            font-weight: 400 !important;
+        }
+
+        /* Rich Gradient */
+        .bg-custom-gradient {
+            background: linear-gradient(135deg, #E6B325 0%, #5C4033 100%);
+        }
+
+        #main-footer {
+            background-color: var(--color-footer-bg);
+            color: var(--color-footer-text);
+        }
+        #main-footer .footer-heading {
+            color: #E6B325 !important; /* Elegant Green Heading */
+        }
+        #main-footer .footer-link:hover {
+            color: #BCAAA4;
+            padding-left: 4px;
+            transition: all 0.2s ease;
+        }
+
+        /* Nav Link Underline */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* DROPDOWN */
+        .dropdown-wrapper { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+            display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover {
+            background-color: var(--color-hover);
+            color: var(--color-accent);
+            padding-left: 1.25rem;
+        }
+
+        @media (max-width: 1024px) {
+            .dropdown-menu { position: static; display: none; opacity: 1; visibility: visible; transform: none; box-shadow: none; }
+            .dropdown-wrapper:hover .dropdown-menu { display: block; }
+        }
+
+        /* ── Canonical Button System ── */
+        .btn-primary, .book-btn {
+            background: linear-gradient(135deg, #E6B325 0%, #5C4033 100%);
+            color: #FFFFFF !important;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary:hover, .book-btn:hover {
+            opacity: 0.88;
+            transform: scale(1.04);
+            box-shadow: 0 6px 18px rgba(230,179,37,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: #FFFFFF !important;
+            box-shadow: 0 4px 12px rgba(230,179,37,0.25);
+        }
+        html[data-theme='dark'] .btn-outline {
+            color: #E6B325;
+            border-color: #E6B325;
+        }
+        html[data-theme='dark'] .btn-outline:hover {
+            background: #E6B325;
+            color: #000;
+        }
+        .btn-cta-white {
+            background: white;
+            color: #E6B325;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-cta-white:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+
+<body class="antialiased flex flex-col min-h-screen">
+
+    <header class="sticky top-0 z-50 transition-colors duration-300 shadow-xl border-b border-border bg-background" id="main-header">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between h-[70px]">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
+                <div class="text-2xl font-serif font-extrabold tracking-tight flex flex-col justify-center">    
+                    <span style="color: #E6B325;">TRIMZO</span>
+                </div>
+            </a>
+
+            <div class="hidden xl:flex items-center space-x-6">
+                <div class="flex space-x-6 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium">
+                    <div class="dropdown-wrapper">
+                        <button class="nav-link flex items-center" id="home-dropdown-btn">
+                            Home
+                            <svg class="w-3 h-3 ml-1 relative top-[2.5px] transition-transform duration-200 text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="index.html">Home 1</a>
+                            <a href="home2.html">Home 2</a>
+                        </div>
+                    </div>
+<a href="about.html" class="nav-link">About Us</a>
+<a href="services.html" class="nav-link">Services</a>
+<a href="gallery.html" class="nav-link">Gallery</a>
+<a href="barbers.html" class="nav-link">Our Barbers</a>
+<a href="products.html" class="nav-link">Products</a>
+<a href="contact.html" class="nav-link">Contact</a>
+                </div>
+
+                <div class="w-px h-6 bg-border mx-3"></div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full transition duration-200">
+                        <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                    <button id="lang-icon" class="text-primary-text hover:text-accent p-1.5 rounded-full transition duration-200">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+</svg>                    </button>
+                    <div class="flex items-center gap-3 ml-3">
+                        <a href="login.html" class="btn-outline px-6 py-2 rounded-xl font-bold shadow-md">Login</a>
+                        <a href="signup.html" class="book-btn px-6 py-2.5 rounded-xl font-bold shadow-md">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="xl:hidden flex items-center">
+                <button id="mobile-menu-open" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow">
+        <!-- SECTION 1: THE FOSSIL HERO (MIRRORS ABOUT PAGE LAYOUT) -->
+        <section class="relative py-10 lg:py-16 overflow-hidden bg-background">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+                    <div class="w-full lg:w-1/2 ltr:text-left rtl:text-right">
+                        <span
+                            class="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-bold text-xs uppercase tracking-widest mb-6">
+                            The Gallery
+                        </span>
+                        <h1 class="text-4xl md:text-6xl font-serif font-bold text-primary-text mb-8 leading-tight">
+                            Our <br><span class="italic text-accent">Masterpieces.</span>
+                        </h1>
+                        <p class="text-secondary-text text-lg leading-relaxed mb-8">
+                            Explore our portfolio of premium haircuts, precision fades, and masterfully sculpted beards. Every style crafted at TRIMZO is a testament to our dedication to the art of modern grooming.
+                        </p>
+                        <div class="flex items-center gap-8">
+                            <div>
+                                <div class="text-3xl font-bold text-primary-text">100+</div>
+                                <div class="text-xs uppercase tracking-widest text-accent font-bold">5-Star Reviews
+                                </div>
+                            </div>
+                            <div class="w-px h-10 bg-border"></div>
+                            <div>
+                                <div class="text-3xl font-bold text-primary-text">Top Tier</div>
+                                <div class="text-xs uppercase tracking-widest text-accent font-bold">Barbering Talent
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/2 relative">
+                        <div class="relative rounded-[3rem] overflow-hidden shadow-2xl border border-border h-[300px] lg:h-[450px]">
+                            <img src="/assets/83923b08-b5e3-4443-8ae4-9f03f5f599b2.png" alt="Dinosaur Fossil Specimen"
+                                class="w-full h-full object-cover object-[center_20%]">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: THE GALLERY GRID -->
+        <section class="py-16 md:py-24 bg-background">
+            <div class="container mx-auto px-6">
+                
+                <!-- Filter Header -->
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-serif font-bold text-primary-text mb-6">Our <span class="italic text-accent">Portfolio</span></h2>
+                    <div class="flex flex-wrap justify-center gap-4 filter-container">
+                        <button data-filter="all" class="filter-btn active px-6 py-2 rounded-full font-bold text-sm transition-colors cursor-pointer">All Works</button>
+                        <button data-filter="haircut" class="filter-btn px-6 py-2 rounded-full border border-border text-secondary-text hover:border-[#E6B325] hover:text-[#E6B325] font-bold text-sm transition-colors cursor-pointer">Haircuts</button>
+                        <button data-filter="beard" class="filter-btn px-6 py-2 rounded-full border border-border text-secondary-text hover:border-[#E6B325] hover:text-[#E6B325] font-bold text-sm transition-colors cursor-pointer">Beards</button>
+                        <button data-filter="shop" class="filter-btn px-6 py-2 rounded-full border border-border text-secondary-text hover:border-[#E6B325] hover:text-[#E6B325] font-bold text-sm transition-colors cursor-pointer">Shop Life</button>
+                    </div>
+                </div>
+
+                <!-- Masonry Layout (CSS columns) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Item 1 (Portrait) -->
+                    <div data-category="haircut" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
+                        <img src="./assets/gal_fade.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Precision Fade</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Haircut</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 (Square) -->
+                    <div data-category="shop" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
+                        <img src="./assets/barber_action1.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Master at Work</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Shop Life</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 (Portrait) -->
+                    <div data-category="beard" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
+                        <img src="./assets/gal_beard.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Executive Sculpt</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Beards</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 (Landscape) -->
+                    <div data-category="beard" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
+                        <img src="./assets/svc_shave.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Hot Towel Shave</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Beards</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 (Portrait) -->
+                    <div data-category="haircut" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
+                        <img src="./assets/home2_gal1.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Textured Crop</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Haircut</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 6 (Portrait) -->
+                    <div data-category="shop" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
+                        <img src="./assets/about_process1.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">The Consultation</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Shop Life</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 7 (Portrait) -->
+                    <div data-category="shop" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
+                        <img src="./assets/barber_action2.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Scissor Work</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Shop Life</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 8 (Portrait) -->
+                    <div data-category="haircut" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
+                        <img src="./assets/gal_pompadour.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Classic Pompadour</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Haircut</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 9 (Landscape) -->
+                    <div data-category="haircut" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
+                        <img src="./assets/home2_svc_modern.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Skin Fade</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Haircut</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: FEATURES -->
+        <section class="py-20 bg-hover/10">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <div>
+                        <div class="w-16 h-16 mx-auto rounded-full bg-accent/20 flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary-text mb-3">Master Barbers</h3>
+                        <p class="text-secondary-text">Highly trained professionals with years of experience in classic and modern styles.</p>
+                    </div>
+                    <div>
+                        <div class="w-16 h-16 mx-auto rounded-full bg-accent/20 flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary-text mb-3">Premium Products</h3>
+                        <p class="text-secondary-text">We use only the finest grooming products to ensure your hair and beard stay healthy.</p>
+                    </div>
+                    <div>
+                        <div class="w-16 h-16 mx-auto rounded-full bg-accent/20 flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary-text mb-3">Relaxing Vibe</h3>
+                        <p class="text-secondary-text">Enjoy a complimentary beverage and unwind in our luxurious, stress-free environment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: CTA -->
+        <section class="py-24 relative overflow-hidden">
+            <img src="./assets/barbershop_hero.png" class="absolute inset-0 w-full h-full object-cover" alt="Barbershop Background">
+            <div class="absolute inset-0 bg-black/70"></div>
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-accent/20 text-accent font-bold text-xs uppercase tracking-widest mb-6">Take The Next Step</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-8">Ready for your <span class="italic text-accent">best look?</span></h2>
+                <a href="#" class="inline-block btn-primary px-10 py-4 rounded-xl font-bold text-white shadow-lg transition-transform hover:-translate-y-1">Book Your Appointment Now</a>
+            </div>
+        </section>
+    </main>
+
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300">
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <div id="drawer-content" class="absolute top-0 left-0 right-0 bg-background rounded-b-2xl shadow-2xl p-6 xl:hidden max-h-[85vh] overflow-y-auto transform translate-y-[-100%] transition-transform duration-300 ease-out">
+            <div class="flex justify-between items-center pb-4 border-b border-border">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
+                    <div class="text-2xl font-serif font-extrabold tracking-wide flex flex-col justify-center">
+                        <span style="color: #E6B325;">TRIMZO</span>
+                    </div>
+                </a>
+                <button id="mobile-menu-close" class="text-primary-text hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2 py-4">
+                <div>
+                    <button class="block text-primary-text font-semibold text-lg py-2 w-full text-left flex justify-between items-center" id="mobile-homes-toggle">
+                        Home <svg class="w-4 h-4 transform transition-transform duration-200 text-primary-text" id="homes-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="mobile-homes-menu" class="hidden pl-4 flex flex-col space-y-1 mt-1 border-l-2 border-border">
+                        <a href="index.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 1</a>
+                        <a href="home2.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 2</a>
+                    </div>
+                </div>
+<a href="about.html" class="block text-primary-text font-semibold text-lg py-2">About Us</a>
+<a href="services.html" class="block text-primary-text font-semibold text-lg py-2">Services</a>
+<a href="gallery.html" class="block text-primary-text font-semibold text-lg py-2">Gallery</a>
+<a href="barbers.html" class="block text-primary-text font-semibold text-lg py-2">Our Barbers</a>
+<a href="products.html" class="block text-primary-text font-semibold text-lg py-2">Products</a>
+<a href="contact.html" class="block text-primary-text font-semibold text-lg py-2">Contact</a>
+            </nav>
+            <div class="pt-4 border-t border-border mt-4 flex justify-around items-center">
+                <button id="mobile-lang-icon-drawer" class="flex flex-col items-center"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+</svg><span class="text-xs mt-1 text-secondary-text">RTL</span></button>
+                <button id="drawer-theme-toggle" class="flex flex-col items-center">
+                    <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    <span class="text-xs mt-1 text-secondary-text">Theme</span>
+                </button>
+            </div>
+            <div class="flex mt-5 gap-5 w-full">
+                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
+                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <footer id="main-footer" class="pt-20 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-gray-800">
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="flex items-center gap-3 mb-4">
+                        <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
+                        <div class="text-2xl font-serif font-extrabold tracking-tight flex flex-col justify-center">    
+                            <span style="color: #E6B325;">TRIMZO</span>
+                        </div>
+                    </a>
+<p class="text-lg leading-relaxed max-w-sm !text-white-400">
+Providing premium grooming services, classic haircuts, and modern styling for the modern gentleman.</p>                    <div class="flex gap-6 mt-10">
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Our Services</h4>
+                   <ul class="space-y-4">
+    <li><a href="services.html" class="footer-link">Classic Haircuts</a></li>
+    <li><a href="services.html" class="footer-link">Beard Trimming</a></li>
+    <li><a href="services.html" class="footer-link">Hot Towel Shave</a></li>
+    <li><a href="services.html" class="footer-link">Hair Styling</a></li>
+</ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="gallery.html" class="footer-link">Gallery</a></li>
+                        <li><a href="barbers.html" class="footer-link">Our Barbers</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Newsletter</h4>
+                    <div class="flex flex-col space-y-4">
+                        <input type="email" placeholder="Email address" class="p-4 text-sm rounded-xl bg-gray-900 border border-gray-800 focus:outline-none text-white" />
+                        <button class="btn-primary font-bold py-3 rounded-xl">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="py-10 text-center text-white-500 text-sm">© 2026 TRIMZO. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            // Drawer Control
+            const menuDrawer = document.getElementById('mobile-menu-drawer');
+            const menuContent = document.getElementById('drawer-content');
+            const menuBackdrop = document.getElementById('drawer-backdrop');
+
+            const openDrawer = () => {
+                menuDrawer.classList.remove('pointer-events-none');
+                menuContent.classList.remove('translate-y-[-100%]');
+                menuBackdrop.classList.add('opacity-50', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                menuContent.classList.add('translate-y-[-100%]');
+                menuBackdrop.classList.remove('opacity-50', 'pointer-events-auto');
+                setTimeout(() => { menuDrawer.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 300);
+            };
+
+            document.getElementById('mobile-menu-open').addEventListener('click', openDrawer);
+            document.getElementById('mobile-menu-close').addEventListener('click', closeDrawer);
+            menuBackdrop.addEventListener('click', closeDrawer);
+
+            // Accordions
+            const setupAccordion = (toggleId, menuId, iconId) => {
+                const toggle = document.getElementById(toggleId);
+                toggle?.addEventListener('click', () => {
+                    const menu = document.getElementById(menuId);
+                    const icon = document.getElementById(iconId);
+                    menu.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            };
+            setupAccordion('mobile-homes-toggle', 'mobile-homes-menu', 'homes-icon');
+
+
+            // Theme & RTL
+            const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('drawer-theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => btn.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            }));
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            const langToggles = [document.getElementById('lang-icon'), document.getElementById('mobile-lang-icon-drawer')];
+            langToggles.forEach(btn => btn.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            }));
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+
+            // Active Nav Logic
+            const setActiveNavLink = () => {
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+
+                // Desktop Links
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.getAttribute('href') === currentPath) {
+                        link.classList.add('active', 'text-accent', 'font-bold');
+                    } else {
+                        link.classList.remove('active', 'text-accent', 'font-bold');
+                    }
+                });
+
+                // Desktop Dropdowns
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('home-dropdown-btn')?.classList.add('active', 'text-accent', 'font-bold');
+                }
+
+                // Mobile Links
+                document.querySelectorAll('#drawer-content a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === currentPath) {
+                        link.classList.add('text-accent', 'font-bold');
+                        link.classList.remove('text-primary-text', 'text-secondary-text');
+                    } else {
+                        if (link.closest('#mobile-homes-menu')) {
+                            link.classList.add('text-secondary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        } else {
+                            link.classList.add('text-primary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        }
+                    }
+                });
+
+                // Mobile Toggles
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('mobile-homes-toggle')?.classList.add('text-accent', 'font-bold');
+                }
+            };
+            setActiveNavLink();
+
+            // Gallery Filtering Logic
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active styles from all buttons
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.classList.add('border', 'border-border', 'text-secondary-text');
+                    });
+                    
+                    // Add active styles to clicked button
+                    btn.classList.add('active');
+                    btn.classList.remove('border', 'border-border', 'text-secondary-text');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 50);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const btnMonthly = document.getElementById("btn-monthly");
+            const btnSeasonal = document.getElementById("btn-seasonal");
+
+            const monthlyPlans = document.getElementById("monthly-plans");
+            const seasonalPlans = document.getElementById("seasonal-plans");
+
+            if (!btnMonthly || !btnSeasonal || !monthlyPlans || !seasonalPlans) return;
+
+            btnMonthly.addEventListener("click", function () {
+
+                btnMonthly.classList.add("bg-[#E6B325]", "text-white", "shadow-lg");
+                btnMonthly.classList.remove("text-primary-text");
+
+                btnSeasonal.classList.remove("bg-[#E6B325]", "text-white", "shadow-lg");
+                btnSeasonal.classList.add("text-primary-text");
+
+                monthlyPlans.classList.remove("hidden");
+                monthlyPlans.classList.add("grid");
+
+                seasonalPlans.classList.remove("grid");
+                seasonalPlans.classList.add("hidden");
+
+            });
+
+            btnSeasonal.addEventListener("click", function () {
+
+                btnSeasonal.classList.add("bg-[#E6B325]", "text-white", "shadow-lg");
+                btnSeasonal.classList.remove("text-primary-text");
+
+                btnMonthly.classList.remove("bg-[#E6B325]", "text-white", "shadow-lg");
+                btnMonthly.classList.add("text-primary-text");
+
+                seasonalPlans.classList.remove("hidden");
+                seasonalPlans.classList.add("grid");
+
+                monthlyPlans.classList.remove("grid");
+                monthlyPlans.classList.add("hidden");
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>

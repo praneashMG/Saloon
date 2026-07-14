@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/fav.png" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Lost in Time | TRIMZO</title>
+    <script src="tailwind.js"></script>
+    <style>
+        /* --- Refined Premium Green & Rich Brown Palette --- */
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #5C4033; 
+            --color-secondary-text: #5C4033; /* Neat Rich Brown */
+            --color-accent: #E6B325; /* Lawn Green */
+            --color-accent-light: #5C4033; /* Rich Brown */
+            --color-border: #E5E7EB; 
+            --color-hover: #FFF8E6; 
+            --color-footer-bg: #5C4033;
+            --color-footer-text: #EAEAEA; 
+        }
+        html[data-theme='dark'] {
+            --color-background: #000000;
+            --color-primary-text: #FFFFFF;
+            --color-secondary-text: #D7CCC8;
+            --color-accent: #E6B325; 
+            --color-accent-light: #BCAAA4; 
+            --color-border: #374151; 
+            --color-hover: #2B1D16;
+            --color-footer-bg: #000000;
+            --color-footer-text: #FFFFFF;
+        }
+        
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-accent-light { color: var(--color-accent-light); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .border-border { border-color: var(--color-border); }
+
+        /* ── Typography Weight System ── */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 500 !important;
+        }
+        p, .text-secondary-text {
+            font-weight: 400 !important;
+        }
+
+        /* Rich Gradient */
+        .bg-custom-gradient {
+            background: linear-gradient(135deg, #E6B325 0%, #5C4033 100%);
+        }
+
+        #main-footer {
+            background-color: var(--color-footer-bg);
+            color: var(--color-footer-text);
+        }
+        #main-footer .footer-heading {
+            color: #E6B325 !important; /* Elegant Green Heading */
+        }
+        #main-footer .footer-link:hover {
+            color: #BCAAA4;
+            padding-left: 4px;
+            transition: all 0.2s ease;
+        }
+
+        /* Nav Link Underline */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* DROPDOWN */
+        .dropdown-wrapper { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+            display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover {
+            background-color: var(--color-hover);
+            color: var(--color-accent);
+            padding-left: 1.25rem;
+        }
+
+        @media (max-width: 1024px) {
+            .dropdown-menu { position: static; display: none; opacity: 1; visibility: visible; transform: none; box-shadow: none; }
+            .dropdown-wrapper:hover .dropdown-menu { display: block; }
+        }
+
+        /* ── Canonical Button System ── */
+        .btn-primary, .book-btn {
+            background: linear-gradient(135deg, #E6B325 0%, #5C4033 100%);
+            color: #FFFFFF !important;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary:hover, .book-btn:hover {
+            opacity: 0.88;
+            transform: scale(1.04);
+            box-shadow: 0 6px 18px rgba(230,179,37,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: #FFFFFF !important;
+            box-shadow: 0 4px 12px rgba(230,179,37,0.25);
+        }
+        html[data-theme='dark'] .btn-outline {
+            color: #E6B325;
+            border-color: #E6B325;
+        }
+        html[data-theme='dark'] .btn-outline:hover {
+            background: #E6B325;
+            color: #000;
+        }
+        .btn-cta-white {
+            background: white;
+            color: #E6B325;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-cta-white:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen justify-center items-center overflow-hidden">
+
+    <!-- Background Decoration -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-[-10%] right-[-10%] w-[400px] h-[400px] rounded-full bg-accent/5 blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] rounded-full bg-accent-light/5 blur-[120px]"></div>
+    </div>
+
+    <main class="relative z-10 text-center px-6">
+        <!-- Visual Icon -->
+        <div class="mb-8 fossil-float">
+            <div class="inline-flex items-center justify-center w-32 h-32 rounded-full bg-accent/10 border-2 border-accent/20">
+                <i class="fas fa-compass text-6xl text-accent"></i>
+            </div>
+        </div>
+
+        <!-- 404 Text -->
+        <h1 class="text-9xl font-serif font-black text-accent mb-4 tracking-tighter">404</h1>
+        
+        <h2 class="text-3xl md:text-4xl font-bold text-primary-text mb-6">
+            Service Not Found
+        </h2>
+        
+        <p class="text-secondary-text text-lg max-w-md mx-auto mb-10 leading-relaxed">
+            This page has been buried under layers of sediment. It seems the link you followed has become extinct or moved to a new grooming era.
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="index.html" class="btn-primary px-8 py-4 rounded-xl font-bold shadow-lg flex items-center gap-3">
+                <i class="fas fa-home"></i>
+                Return to Surface
+            </a>
+            
+            <a href="contact.html" class="px-8 py-4 rounded-xl font-bold border-2 border-border hover:bg-hover transition-colors flex items-center gap-3 text-primary-text">
+                <i class="fas fa-envelope"></i>
+                Report a Discovery
+            </a>
+        </div>
+
+        <!-- Small Footer Link -->
+        <div class="mt-16">
+            <a href="index.html" class="text-sm font-serif font-extrabold tracking-tight hover:opacity-80 transition-opacity">
+                <span style="color: #E6B325;">TRIMZO</span>
+            </a>
+        </div>
+    </main>
+
+    <script>
+        // Apply persisted theme
+        const applyTheme = (theme) => {
+            document.documentElement.setAttribute('data-theme', theme);
+        };
+        applyTheme(localStorage.getItem('theme') || 'light');
+    </script>
+</body>
+</html>

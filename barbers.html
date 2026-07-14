@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/fav.png" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Grooming | TRIMZO</title>
+
+    <script src="tailwind.js"></script>
+    <style>
+        /* --- Refined Premium Green & Rich Brown Palette --- */
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #5C4033; 
+            --color-secondary-text: #5C4033; /* Neat Rich Brown */
+            --color-accent: #E6B325; /* Lawn Green */
+            --color-accent-light: #5C4033; /* Rich Brown */
+            --color-border: #E5E7EB; 
+            --color-hover: #FFF8E6; 
+            --color-footer-bg: #5C4033;
+            --color-footer-text: #EAEAEA; 
+        }
+        html[data-theme='dark'] {
+            --color-background: #000000;
+            --color-primary-text: #FFFFFF;
+            --color-secondary-text: #D7CCC8;
+            --color-accent: #E6B325; 
+            --color-accent-light: #BCAAA4; 
+            --color-border: #374151; 
+            --color-hover: #2B1D16;
+            --color-footer-bg: #000000;
+            --color-footer-text: #FFFFFF;
+        }
+        
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-accent-light { color: var(--color-accent-light); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .border-border { border-color: var(--color-border); }
+
+        /* ── Typography Weight System ── */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 500 !important;
+        }
+        p, .text-secondary-text {
+            font-weight: 400 !important;
+        }
+
+        /* Rich Gradient */
+        .bg-custom-gradient {
+            background: linear-gradient(135deg, #E6B325 0%, #5C4033 100%);
+        }
+
+        #main-footer {
+            background-color: var(--color-footer-bg);
+            color: var(--color-footer-text);
+        }
+        #main-footer .footer-heading {
+            color: #E6B325 !important; /* Elegant Green Heading */
+        }
+        #main-footer .footer-link:hover {
+            color: #BCAAA4;
+            padding-left: 4px;
+            transition: all 0.2s ease;
+        }
+
+        /* Nav Link Underline */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* DROPDOWN */
+        .dropdown-wrapper { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+            display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover {
+            background-color: var(--color-hover);
+            color: var(--color-accent);
+            padding-left: 1.25rem;
+        }
+
+        @media (max-width: 1024px) {
+            .dropdown-menu { position: static; display: none; opacity: 1; visibility: visible; transform: none; box-shadow: none; }
+            .dropdown-wrapper:hover .dropdown-menu { display: block; }
+        }
+
+        /* ── Canonical Button System ── */
+        .btn-primary, .book-btn {
+            background: linear-gradient(135deg, #E6B325 0%, #5C4033 100%);
+            color: #FFFFFF !important;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary:hover, .book-btn:hover {
+            opacity: 0.88;
+            transform: scale(1.04);
+            box-shadow: 0 6px 18px rgba(230,179,37,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: #FFFFFF !important;
+            box-shadow: 0 4px 12px rgba(230,179,37,0.25);
+        }
+        html[data-theme='dark'] .btn-outline {
+            color: #E6B325;
+            border-color: #E6B325;
+        }
+        html[data-theme='dark'] .btn-outline:hover {
+            background: #E6B325;
+            color: #000;
+        }
+        .btn-cta-white {
+            background: white;
+            color: #E6B325;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-cta-white:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+
+<body class="antialiased flex flex-col min-h-screen">
+
+    <header class="sticky top-0 z-50 transition-colors duration-300 shadow-xl border-b border-border bg-background" id="main-header">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between h-[70px]">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
+                <div class="text-2xl font-serif font-extrabold tracking-tight flex flex-col justify-center">    
+                    <span style="color: #E6B325;">TRIMZO</span>
+                </div>
+            </a>
+
+            <div class="hidden xl:flex items-center space-x-6">
+                <div class="flex space-x-6 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium">
+                    <div class="dropdown-wrapper">
+                        <button class="nav-link flex items-center" id="home-dropdown-btn">
+                            Home
+                            <svg class="w-3 h-3 ml-1 relative top-[2.5px] transition-transform duration-200 text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="index.html">Home 1</a>
+                            <a href="home2.html">Home 2</a>
+                        </div>
+                    </div>
+<a href="about.html" class="nav-link">About Us</a>
+<a href="services.html" class="nav-link">Services</a>
+<a href="gallery.html" class="nav-link">Gallery</a>
+<a href="barbers.html" class="nav-link">Our Barbers</a>
+<a href="products.html" class="nav-link">Products</a>
+<a href="contact.html" class="nav-link">Contact</a>
+                </div>
+
+                <div class="w-px h-6 bg-border mx-3"></div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full transition duration-200">
+                        <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                    <button id="lang-icon" class="text-primary-text hover:text-accent p-1.5 rounded-full transition duration-200">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+</svg>                    </button>
+                    <div class="flex items-center gap-3 ml-3">
+                        <a href="login.html" class="btn-outline px-6 py-2 rounded-xl font-bold shadow-md">Login</a>
+                        <a href="signup.html" class="book-btn px-6 py-2.5 rounded-xl font-bold shadow-md">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="xl:hidden flex items-center">
+                <button id="mobile-menu-open" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow">
+        <!-- SECTION 1: BARBER HERO -->
+        <section class="relative min-h-[60vh] flex items-center justify-center py-20 overflow-hidden">
+            <!-- Background Image -->
+            <div class="absolute inset-0 z-0">
+                <img src="./assets/contact_hero.png" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/70"></div>
+            </div>
+            
+            <div class="container mx-auto px-6 relative z-10 text-center text-white">
+                <span class="inline-block px-6 py-2 rounded-full bg-accent/20 text-accent border border-accent/30 font-bold text-xs uppercase tracking-widest mb-6">
+                    Meet The Team
+                </span>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 leading-tight">
+                    Meet Our Master <br><span class="italic text-accent">Barbers.</span>
+                </h1>
+                <p class="text-white/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto mb-12">
+                    Explore the world's finest grooming talent. From precision skin fades to classic
+                    hot towel shaves, TRIMZO provides services delivered by passionate experts dedicated to
+                    the art of modern barbering.
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-12 md:gap-20">
+                    <div>
+                        <div class="text-4xl md:text-5xl font-bold text-white mb-2">50+</div>
+                        <div class="text-xs uppercase tracking-[0.2em] text-accent font-bold">Years Experience</div>
+                    </div>
+                    <div class="w-px h-16 bg-white/20 hidden md:block"></div>
+                    <div>
+                        <div class="text-4xl md:text-5xl font-bold text-white mb-2">5-Star</div>
+                        <div class="text-xs uppercase tracking-[0.2em] text-accent font-bold">Average Rating</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SECTION 2: THE STAGGERED MOSAIC (AESTHETIC SPOTLIGHT) -->
+        <section class="py-24 bg-hover/10 overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col lg:flex-row gap-20">
+                    <div class="w-full lg:w-2/5">
+                        <h2 class="text-3xl md:text-5xl font-serif font-bold text-primary-text mb-8">Crafted by <br><span
+                                class="italic text-accent">Experience.</span></h2>
+                        <p class="text-secondary-text text-lg mb-10">A great haircut is the physical record of a barber's
+                            dedication. We focus on 'Mastery'—our barbers hone their skills through years of practice to
+                            achieve absolute precision.</p>
+                        <div class="relative p-8 rounded-3xl bg-background border border-border shadow-inner">
+                            <h4 class="font-bold text-xl mb-4 text-primary-text">Passion & Precision</h4>
+                            <p class="text-sm text-secondary-text leading-relaxed">Our team prioritizes
+                                techniques that exhibit timeless style, sharp contours, and flawless execution, ensuring you look your
+                                absolute best.</p>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-3/5 grid grid-cols-2 gap-4">
+                        <div class="space-y-4 pt-12">
+                            <div class="rounded-3xl overflow-hidden h-80 border border-border">
+                                <img src="./assets/barber_action1.png"
+                                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                            </div>
+                            <div class="rounded-3xl overflow-hidden h-60 border border-border">
+                                <img src="./assets/barber_action2.png"
+                                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="rounded-3xl overflow-hidden h-80 border border-border ">
+                                <img src="./assets/barber_action3.png"
+                                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                            </div>
+                            <div class="rounded-3xl overflow-hidden h-96 border border-border">
+                                <img src="./assets/svc_grid4.png" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: SCIENTIFIC PROPERTY CARDS (VERTICAL LAYOUT) -->
+        <section class="py-24 bg-background">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-20">
+                    <span class="text-accent font-bold text-xs uppercase tracking-widest">Core Competencies</span>
+                    <h2 class="text-4xl font-serif font-bold text-primary-text mt-4">Our Specialities</h2>
+                </div>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-4 gap-0 border border-border rounded-[3rem] overflow-hidden shadow-2xl">
+                    <div
+                        class="p-10 border-b md:border-b-0 md:border-r border-border hover:bg-hover transition-colors group">
+                        <div class="text-accent text-2xl mb-6 group-hover:scale-110 transition-transform"><i
+                                class="fas fa-gem"></i></div>
+                        <h5 class="font-bold text-lg mb-2">Precision Fades</h5>
+                        <p class="text-sm text-secondary-text">Flawless transitions and sharp lineups tailored to your head shape.</p>
+                    </div>
+                    <div
+                        class="p-10 border-b md:border-b-0 md:border-r border-border hover:bg-hover transition-colors group">
+                        <div class="text-accent text-2xl mb-6 group-hover:scale-110 transition-transform"><i
+                                class="fas fa-microscope"></i></div>
+                        <h5 class="font-bold text-lg mb-2">Scissor Work</h5>
+                        <p class="text-sm text-secondary-text">Classic shear techniques for longer styles and perfect texture.</p>
+                    </div>
+                    <div
+                        class="p-10 border-b md:border-b-0 md:border-r border-border hover:bg-hover transition-colors group">
+                        <div class="text-accent text-2xl mb-6 group-hover:scale-110 transition-transform"><i
+                                class="fas fa-flask"></i></div>
+                        <h5 class="font-bold text-lg mb-2">Hot Towel Shaves</h5>
+                        <p class="text-sm text-secondary-text">Relaxing straight razor shaves with premium lather and essential oils.
+                        </p>
+                    </div>
+                    <div class="p-10 hover:bg-hover transition-colors group">
+                        <div class="text-accent text-2xl mb-6 group-hover:scale-110 transition-transform"><i
+                                class="fas fa-weight-hanging"></i></div>
+                        <h5 class="font-bold text-lg mb-2">Beard Sculpting</h5>
+                        <p class="text-sm text-secondary-text">Detailed beard shaping and trimming for a sharp, masculine profile.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SECTION 4 : CRYSTAL COLLECTION SHOWCASE -->
+        <section class="py-28 bg-background overflow-hidden transition-colors duration-300">
+            <div class="container mx-auto px-6">
+
+                <!-- Heading -->
+                <div class="max-w-4xl mx-auto text-center mb-20">
+                    <span class="uppercase tracking-[0.4em] text-xs font-bold text-accent">
+                        Lead Barber
+                    </span>
+
+                    <h2 class="mt-6 text-5xl md:text-7xl font-serif font-bold text-primary-text leading-tight">
+                        Meet The Team
+                        <span class="italic text-accent-light">Refined.</span>
+                    </h2>
+
+                    <p class="mt-8 text-secondary-text text-lg leading-relaxed max-w-2xl mx-auto">
+                        With over 15 years in the industry, Marcus brings a wealth of experience,
+                        classic techniques, and an unmatched eye for detail.
+                    </p>
+                </div>
+
+                <!-- Grid -->
+                <div class="grid lg:grid-cols-3 gap-8">
+
+                    <!-- Featured Image -->
+                    <div
+                        class="lg:col-span-2 relative rounded-[3rem] overflow-hidden h-[650px] group border border-border">
+
+                        <img src="./assets/barber_portrait_marcus.png"
+                            class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+
+                        <div class="absolute bottom-0 left-0 p-10 md:p-14 text-white">
+
+                            <span class="uppercase tracking-[0.3em] text-xs text-white/60 font-bold">
+                                Master Barber
+                            </span>
+
+                            <h3 class="text-4xl md:text-5xl font-serif font-bold mt-5 mb-6">
+                                The Classic
+                                <span class="italic text-accent">Gentleman</span>
+                            </h3>
+
+                            <p class="text-white/70 max-w-xl leading-relaxed text-lg">
+                                Specializing in traditional pompadours, executive contours, and impeccable hot towel straight razor shaves.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <!-- Side Cards -->
+                    <div class="flex flex-col gap-8">
+
+                        <!-- Card -->
+                        <div
+                            class="border border-border bg-background rounded-[2.5rem] p-10 hover:bg-hover transition-all duration-500 group">
+
+                            <div class="flex items-center justify-between mb-12">
+                                <span class="text-5xl font-serif text-secondary-text/20">
+                                    01
+                                </span>
+
+                                <div class="w-12 h-[1px] bg-border"></div>
+                            </div>
+
+                            <h4 class="text-2xl font-serif font-bold mb-4 text-primary-text">
+                                Precision
+                            </h4>
+
+                            <p class="text-secondary-text leading-relaxed">
+                                Known for creating perfectly balanced haircuts with sharp, clean edges that last for weeks.
+                            </p>
+                        </div>
+
+                        <!-- Dark Accent Card -->
+                        <div class="bg-primary-text text-background rounded-[2.5rem] p-10 relative overflow-hidden">
+
+                            <div class="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
+
+                            <span class="text-5xl font-serif text-secondary-text/20">
+                                02
+                            </span>
+
+                            <h4 class="text-2xl font-serif font-bold mt-10 mb-4">
+                                Consultation
+                            </h4>
+
+                            <p class="opacity-70 leading-relaxed mb-8">
+                                Marcus takes the time to understand your lifestyle and face shape to craft the perfect look.
+                            </p>
+
+                            <div
+                                class="flex items-center gap-3 text-xs uppercase tracking-[0.2em] font-bold text-accent">
+                                <div class="w-2 h-2 rounded-full bg-accent"></div>
+                                Book Marcus
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- SECTION 5 : PREMIUM SPECIMEN SHOWCASE -->
+        <section class="py-24 bg-background overflow-hidden transition-colors duration-300">
+            <div class="container mx-auto px-6">
+
+                <!-- Top Heading -->
+                <div class="max-w-3xl mb-16">
+                    <span class="text-accent uppercase tracking-[0.35em] text-xs font-bold">
+                        Grooming Specialist
+                    </span>
+
+                    <h2 class="mt-5 text-4xl md:text-6xl font-serif font-bold text-primary-text leading-tight">
+                        Julian
+                        <span class="italic text-accent-light">Ramirez</span>
+                    </h2>
+
+                    <p class="mt-6 text-secondary-text text-lg leading-relaxed">
+                        Julian is our resident expert in modern styles, creative fades, and comprehensive skin & scalp treatments.
+                    </p>
+                </div>
+
+                <!-- Main Layout -->
+                <div class="grid lg:grid-cols-2 gap-10 items-center">
+
+                    <!-- Left Image Card -->
+                    <div class="relative group overflow-hidden rounded-[3rem] border border-border">
+
+                        <img src="./assets/barber_portrait_julian.png"
+                            class="w-full h-[500px] md:h-[650px] object-cover transition duration-1000 group-hover:scale-105">
+
+                        <!-- Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+
+                        <!-- Floating Info -->
+                        <div class="absolute bottom-0 left-0 p-8 md:p-12 text-white">
+
+                            <div class="flex items-center gap-3 mb-5">
+                                <div class="w-3 h-3 rounded-full bg-accent"></div>
+
+                                <span class="uppercase tracking-[0.25em] text-xs font-bold text-white/70">
+                                    Client Grade
+                                </span>
+                            </div>
+
+                            <h3 class="text-3xl md:text-5xl font-serif font-bold leading-tight mb-5">
+                                The Modern Stylist
+                            </h3>
+
+                            <p class="text-white/70 leading-relaxed max-w-xl text-sm md:text-lg">
+                                Julian blends urban barbering techniques with premium salon finishing to deliver sharp, contemporary looks.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <!-- Right Content -->
+                    <div class="space-y-6">
+
+                        <!-- Card -->
+                        <div
+                            class="bg-hover border border-border rounded-[2.5rem] p-8 md:p-10 hover:shadow-xl transition-all duration-500">
+
+                            <div class="flex items-start justify-between gap-5">
+
+                                <div>
+                                    <span class="text-accent text-xs uppercase tracking-[0.25em] font-bold">
+                                        Origin
+                                    </span>
+
+                                    <h4 class="text-2xl font-serif font-bold text-primary-text mt-4 mb-4">
+                                        Brazilian Highlands
+                                    </h4>
+
+                                    <p class="text-secondary-text leading-relaxed">
+                                        Known globally for producing premium grooming services
+                                        with exceptional transparency and crystal growth.
+                                    </p>
+                                </div>
+
+                                <div
+                                    class="w-14 h-14 rounded-2xl bg-background border border-border flex items-center justify-center shrink-0">
+                                    <i class="fas fa-mountain text-accent text-xl"></i>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Card -->
+                        <div
+                            class="bg-background border border-border rounded-[2.5rem] p-8 md:p-10 hover:bg-hover transition-all duration-500">
+
+                            <div class="flex items-start justify-between gap-5">
+
+                                <div>
+                                    <span class="text-accent text-xs uppercase tracking-[0.25em] font-bold">
+                                        Authentication
+                                    </span>
+
+                                    <h4 class="text-2xl font-serif font-bold text-primary-text mt-4 mb-4">
+                                        Verified Services
+                                    </h4>
+
+                                    <p class="text-secondary-text leading-relaxed">
+                                        Each service undergoes careful grooming inspection
+                                        for authenticity, structure, and preservation quality.
+                                    </p>
+                                </div>
+
+                                <div
+                                    class="w-14 h-14 rounded-2xl bg-hover border border-border flex items-center justify-center shrink-0">
+                                    <i class="fas fa-certificate text-accent text-xl"></i>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="grid grid-cols-2 gap-5">
+
+                            <div class="bg-primary-text text-background rounded-[2rem] p-8">
+                                <div class="text-4xl font-bold mb-3">250+</div>
+                                <div class="uppercase tracking-[0.2em] text-xs opacity-70">
+                                    Premium Services
+                                </div>
+                            </div>
+
+                            <div class="bg-hover border border-border rounded-[2rem] p-8">
+                                <div class="text-4xl font-bold text-primary-text mb-3">
+                                    100%
+                                </div>
+
+                                <div class="uppercase tracking-[0.2em] text-xs text-secondary-text">
+                                    Natural Formation
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 6: OPTICAL PROPERTIES (SPLIT DARK/LIGHT LAYOUT) -->
+        <section class="py-24 bg-background">
+            <div class="container mx-auto px-6">
+                <div
+                    class="flex flex-col lg:flex-row items-stretch border border-border rounded-[3rem] overflow-hidden shadow-xl">
+                    <div class="w-full lg:w-1/2 p-12 md:p-20 bg-hover">
+                        <h3 class="text-3xl font-serif font-bold text-primary-text mb-6">The TRIMZO <span
+                                class="text-accent italic">Atmosphere</span></h3>
+                        <p class="text-secondary-text leading-relaxed mb-8">We believe that a great haircut deserves a great environment. Our barbershop is designed to be a haven for men—complete with vintage leather chairs, warm lighting, and a relaxing ambiance.</p>
+                        <div class="w-full h-48 rounded-2xl overflow-hidden border border-border">
+                            <img src="./assets/about_hero_new.png" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/2 p-12 md:p-20 bg-[#000] text-white">
+                        <h3 class="text-3xl font-serif font-bold text-accent mb-6">Premium <span
+                                class="italic text-white">Tools</span></h3>
+                        <p class="text-white/50 leading-relaxed mb-8">Our master barbers use only the finest, professional-grade tools. From perfectly balanced straight razors to ultra-precise clippers, every tool is meticulously maintained.</p>
+                        <div class="w-full h-48 rounded-2xl overflow-hidden border border-white/10 grayscale">
+                            <img src="./assets/svc_grid2.png" class="w-full h-full object-cover opacity-60">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300">
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <div id="drawer-content" class="absolute top-0 left-0 right-0 bg-background rounded-b-2xl shadow-2xl p-6 xl:hidden max-h-[85vh] overflow-y-auto transform translate-y-[-100%] transition-transform duration-300 ease-out">
+            <div class="flex justify-between items-center pb-4 border-b border-border">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
+                    <div class="text-2xl font-serif font-extrabold tracking-wide flex flex-col justify-center">
+                        <span style="color: #E6B325;">TRIMZO</span>
+                    </div>
+                </a>
+                <button id="mobile-menu-close" class="text-primary-text hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2 py-4">
+                <div>
+                    <button class="block text-primary-text font-semibold text-lg py-2 w-full text-left flex justify-between items-center" id="mobile-homes-toggle">
+                        Home <svg class="w-4 h-4 transform transition-transform duration-200 text-primary-text" id="homes-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="mobile-homes-menu" class="hidden pl-4 flex flex-col space-y-1 mt-1 border-l-2 border-border">
+                        <a href="index.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 1</a>
+                        <a href="home2.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 2</a>
+                    </div>
+                </div>
+<a href="about.html" class="block text-primary-text font-semibold text-lg py-2">About Us</a>
+<a href="services.html" class="block text-primary-text font-semibold text-lg py-2">Services</a>
+<a href="gallery.html" class="block text-primary-text font-semibold text-lg py-2">Gallery</a>
+<a href="barbers.html" class="block text-primary-text font-semibold text-lg py-2">Our Barbers</a>
+<a href="products.html" class="block text-primary-text font-semibold text-lg py-2">Products</a>
+<a href="contact.html" class="block text-primary-text font-semibold text-lg py-2">Contact</a>
+            </nav>
+            <div class="pt-4 border-t border-border mt-4 flex justify-around items-center">
+                <button id="mobile-lang-icon-drawer" class="flex flex-col items-center"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+</svg><span class="text-xs mt-1 text-secondary-text">RTL</span></button>
+                <button id="drawer-theme-toggle" class="flex flex-col items-center">
+                    <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    <span class="text-xs mt-1 text-secondary-text">Theme</span>
+                </button>
+            </div>
+            <div class="flex mt-5 gap-5 w-full">
+                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
+                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <footer id="main-footer" class="pt-20 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-gray-800">
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="flex items-center gap-3 mb-4">
+                        <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
+                        <div class="text-2xl font-serif font-extrabold tracking-tight flex flex-col justify-center">    
+                            <span style="color: #E6B325;">TRIMZO</span>
+                        </div>
+                    </a>
+<p class="text-lg leading-relaxed max-w-sm !text-white-400">
+Providing premium grooming services, classic haircuts, and modern styling for the modern gentleman.</p>                    <div class="flex gap-6 mt-10">
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Our Services</h4>
+                   <ul class="space-y-4">
+    <li><a href="services.html" class="footer-link">Classic Haircuts</a></li>
+    <li><a href="services.html" class="footer-link">Beard Trimming</a></li>
+    <li><a href="services.html" class="footer-link">Hot Towel Shave</a></li>
+    <li><a href="services.html" class="footer-link">Hair Styling</a></li>
+</ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="gallery.html" class="footer-link">Gallery</a></li>
+                        <li><a href="barbers.html" class="footer-link">Our Barbers</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Newsletter</h4>
+                    <div class="flex flex-col space-y-4">
+                        <input type="email" placeholder="Email address" class="p-4 text-sm rounded-xl bg-gray-900 border border-gray-800 focus:outline-none text-white" />
+                        <button class="btn-primary font-bold py-3 rounded-xl">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="py-10 text-center text-white-500 text-sm">© 2026 TRIMZO. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            // Drawer Control
+            const menuDrawer = document.getElementById('mobile-menu-drawer');
+            const menuContent = document.getElementById('drawer-content');
+            const menuBackdrop = document.getElementById('drawer-backdrop');
+
+            const openDrawer = () => {
+                menuDrawer.classList.remove('pointer-events-none');
+                menuContent.classList.remove('translate-y-[-100%]');
+                menuBackdrop.classList.add('opacity-50', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                menuContent.classList.add('translate-y-[-100%]');
+                menuBackdrop.classList.remove('opacity-50', 'pointer-events-auto');
+                setTimeout(() => { menuDrawer.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 300);
+            };
+
+            document.getElementById('mobile-menu-open').addEventListener('click', openDrawer);
+            document.getElementById('mobile-menu-close').addEventListener('click', closeDrawer);
+            menuBackdrop.addEventListener('click', closeDrawer);
+
+            // Accordions
+            const setupAccordion = (toggleId, menuId, iconId) => {
+                const toggle = document.getElementById(toggleId);
+                toggle?.addEventListener('click', () => {
+                    const menu = document.getElementById(menuId);
+                    const icon = document.getElementById(iconId);
+                    menu.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            };
+            setupAccordion('mobile-homes-toggle', 'mobile-homes-menu', 'homes-icon');
+
+
+            // Theme & RTL
+            const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('drawer-theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => btn.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            }));
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            const langToggles = [document.getElementById('lang-icon'), document.getElementById('mobile-lang-icon-drawer')];
+            langToggles.forEach(btn => btn.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            }));
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+
+            // Active Nav Logic
+            const setActiveNavLink = () => {
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+
+                // Desktop Links
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.getAttribute('href') === currentPath) {
+                        link.classList.add('active', 'text-accent', 'font-bold');
+                    } else {
+                        link.classList.remove('active', 'text-accent', 'font-bold');
+                    }
+                });
+
+                // Desktop Dropdowns
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('home-dropdown-btn')?.classList.add('active', 'text-accent', 'font-bold');
+                }
+
+                // Mobile Links
+                document.querySelectorAll('#drawer-content a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === currentPath) {
+                        link.classList.add('text-accent', 'font-bold');
+                        link.classList.remove('text-primary-text', 'text-secondary-text');
+                    } else {
+                        if (link.closest('#mobile-homes-menu')) {
+                            link.classList.add('text-secondary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        } else {
+                            link.classList.add('text-primary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        }
+                    }
+                });
+
+                // Mobile Toggles
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('mobile-homes-toggle')?.classList.add('text-accent', 'font-bold');
+                }
+            };
+            setActiveNavLink();
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const btnMonthly = document.getElementById("btn-monthly");
+            const btnSeasonal = document.getElementById("btn-seasonal");
+
+            const monthlyPlans = document.getElementById("monthly-plans");
+            const seasonalPlans = document.getElementById("seasonal-plans");
+
+            if (!btnMonthly || !btnSeasonal || !monthlyPlans || !seasonalPlans) return;
+
+            btnMonthly.addEventListener("click", function () {
+
+                btnMonthly.classList.add("bg-[#E6B325]", "text-white", "shadow-lg");
+                btnMonthly.classList.remove("text-primary-text");
+
+                btnSeasonal.classList.remove("bg-[#E6B325]", "text-white", "shadow-lg");
+                btnSeasonal.classList.add("text-primary-text");
+
+                monthlyPlans.classList.remove("hidden");
+                monthlyPlans.classList.add("grid");
+
+                seasonalPlans.classList.remove("grid");
+                seasonalPlans.classList.add("hidden");
+
+            });
+
+            btnSeasonal.addEventListener("click", function () {
+
+                btnSeasonal.classList.add("bg-[#E6B325]", "text-white", "shadow-lg");
+                btnSeasonal.classList.remove("text-primary-text");
+
+                btnMonthly.classList.remove("bg-[#E6B325]", "text-white", "shadow-lg");
+                btnMonthly.classList.add("text-primary-text");
+
+                seasonalPlans.classList.remove("hidden");
+                seasonalPlans.classList.add("grid");
+
+                monthlyPlans.classList.remove("grid");
+                monthlyPlans.classList.add("hidden");
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>
