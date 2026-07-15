@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/assets/fav.png" type="image/jpeg">
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- Chart.js -->
@@ -149,9 +149,9 @@
             cursor: pointer;
         }
         .btn-primary:hover, .book-btn:hover {
-            opacity: 0.88;
+            background: linear-gradient(135deg, #d4a520 0%, #4a3328 100%);
             transform: scale(1.04);
-            box-shadow: 0 6px 18px rgba(230,179,37,0.3);
+            box-shadow: 0 8px 24px rgba(230,179,37,0.45);
         }
         .btn-outline {
             background: transparent;
@@ -162,8 +162,9 @@
         }
         .btn-outline:hover {
             background: var(--color-accent);
-            color: #FFFFFF !important;
-            box-shadow: 0 4px 12px rgba(230,179,37,0.25);
+            color: #1a1a1a !important;
+            box-shadow: 0 6px 18px rgba(230,179,37,0.35);
+            transform: translateY(-1px);
         }
         html[data-theme='dark'] .btn-outline {
             color: #E6B325;
@@ -171,7 +172,8 @@
         }
         html[data-theme='dark'] .btn-outline:hover {
             background: #E6B325;
-            color: #000;
+            color: #1a1a1a !important;
+            box-shadow: 0 6px 18px rgba(230,179,37,0.35);
         }
         .btn-cta-white {
             background: white;
@@ -180,9 +182,10 @@
             cursor: pointer;
         }
         .btn-cta-white:hover {
-            background: #f3f4f6;
+            background: #E6B325;
+            color: #1a1a1a;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 24px rgba(230,179,37,0.3);
         }
     </style>
 </head>
@@ -194,7 +197,7 @@
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between h-[70px]">
             <a href="index.html" class="flex items-center gap-3">
                 <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
-                <div class="text-2xl font-serif font-extrabold tracking-tight flex flex-col justify-center">    
+                <div class="text-2xl font-serif font-medium tracking-tight flex flex-col justify-center">    
                     <span style="color: #E6B325;">TRIMZO</span>
                 </div>
             </a>
@@ -264,7 +267,7 @@
                     </div>
 
                     <nav class="flex flex-col gap-1">
-                        <p class="text-xs uppercase tracking-wider text-secondary-text font-bold px-3 mb-2">Vault Management</p>
+                        <p class="text-xs uppercase tracking-wider text-secondary-text font-normal px-3 mb-2">Salon Management</p>
 
                         <a href="#" data-section="overview" class="sidebar-link active">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -344,7 +347,7 @@
                 <!-- OVERVIEW / STATISTICS SECTION -->
                 <div id="overview" class="admin-section">
                     <div class="mb-8">
-                        <h1 class="text-3xl font-serif font-bold text-primary-text">Welcome back, Barber!</h1>
+                        <h1 class="text-3xl font-serif font-medium text-primary-text">Welcome back, Barber!</h1>
                         <p class="text-secondary-text mt-1">System status is normal. 12 high-value services pending dispatch.</p>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
@@ -352,7 +355,7 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-secondary-text text-sm">VIP Collectors</p>
-                                    <p class="text-3xl font-black mt-1">1,284</p>
+                                    <p class="text-3xl font-medium mt-1">1,284</p>
                                     <p class="text-xs text-emerald-600 mt-2">↑ 12% from last quarter</p>
                                 </div>
                                 <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
@@ -364,7 +367,7 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-secondary-text text-sm">Secured Shipments</p>
-                                    <p class="text-3xl font-black mt-1">1,052</p>
+                                    <p class="text-3xl font-medium mt-1">1,052</p>
                                     <p class="text-xs text-emerald-600 mt-2">98% delivery success</p>
                                 </div>
                                 <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
@@ -376,7 +379,7 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-secondary-text text-sm">Services Acquired</p>
-                                    <p class="text-3xl font-black mt-1">43</p>
+                                    <p class="text-3xl font-medium mt-1">43</p>
                                     <p class="text-xs text-emerald-600 mt-2">+8 premium classic haircuts</p>
                                 </div>
                                 <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
@@ -388,7 +391,7 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-secondary-text text-sm">Gallery Viewings</p>
-                                    <p class="text-3xl font-black mt-1">156</p>
+                                    <p class="text-3xl font-medium mt-1">156</p>
                                     <p class="text-xs text-amber-600 mt-2">↑ 34% (May peak)</p>
                                 </div>
                                 <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
@@ -401,11 +404,11 @@
                     <!-- Charts Row -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
                         <div class="dashboard-card p-6 reveal">
-                            <h3 class="font-bold text-lg mb-4">Quarterly Sales Volume</h3>
+                            <h3 class="font-medium text-lg mb-4">Quarterly Sales Volume</h3>
                             <canvas id="shipmentChart" height="200"></canvas>
                         </div>
                         <div class="dashboard-card p-6 reveal">
-                            <h3 class="font-bold text-lg mb-4">Top Service Categories</h3>
+                            <h3 class="font-medium text-lg mb-4">Top Service Categories</h3>
                             <canvas id="pairingChart" height="200"></canvas>
                         </div>
                     </div>
@@ -413,7 +416,7 @@
                     <!-- Recent Club Member Activity -->
                     <div class="dashboard-card p-6 mt-6 reveal">
                         <div class="flex justify-between items-center mb-6">
-                            <h3 class="font-bold text-lg">Recent Collectors & Acquisitions</h3>
+                            <h3 class="font-medium text-lg">Recent Collectors & Acquisitions</h3>
                             <button class="text-accent text-sm font-bold hover:underline">View All</button>
                         </div>
                         <div class="overflow-x-auto">
@@ -458,7 +461,7 @@
                 <!-- CLUB MEMBERS SECTION -->
                 <div id="users" class="admin-section hidden">
                     <div class="dashboard-card p-6 reveal">
-                        <h2 class="text-2xl font-serif font-bold mb-6"><span class="text-accent">◉</span> Client Directory</h2>
+                        <h2 class="text-2xl font-serif font-medium mb-6"><span class="text-accent">◉</span> Client Directory</h2>
                         <div class="flex flex-col sm:flex-row gap-4 mb-6">
                             <div class="flex-1 relative"><input type="text" placeholder="Search by name, ID, or institution..."
                                     class="w-full px-4 py-3 bg-hover border border-border rounded-xl"><i
@@ -505,32 +508,32 @@
                 <!-- QUARTERLY SHIPMENTS MANAGEMENT -->
                 <div id="shipments" class="admin-section hidden">
                     <div class="dashboard-card p-6 reveal">
-                        <h2 class="text-2xl font-serif font-bold mb-4"><span class="text-accent">📦</span> Secured Logistics Tracker</h2>
-                        <p class="mb-4 text-secondary-text">Manage freight, insured transit, and high-value service delivery statuses.</p>
+                        <h2 class="text-2xl font-serif font-medium mb-4"><span class="text-accent">📦</span> Secured Logistics Tracker</h2>
+                        <p class="mb-4 text-secondary-text">Manage Booking, insured transit, and high-value service delivery statuses.</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="p-4 border border-border rounded-xl">
-                                <div class="flex justify-between"><span class="font-bold">Megalodon Tooth #M-101</span><span
+                                <div class="flex justify-between"><span class="font-bold">Premium Package #P-101</span><span
                                         class="badge-success px-2 py-0.5 text-xs bg-emerald-500/10 text-emerald-600 rounded-full font-bold">In Transit</span></div>
                                 <div class="text-sm text-secondary-text mt-1">Armored Carrier · White Glove Delivery</div>
                             </div>
                             <div class="p-4 border border-border rounded-xl">
-                                <div class="flex justify-between"><span class="font-bold">Amethyst Geode (1.2t)</span><span
-                                        class="badge-warning px-2 py-0.5 text-xs bg-amber-500/10 text-amber-600 rounded-full font-bold">Crating Pending</span></div>
-                                <div class="text-sm text-secondary-text mt-1">Freight Transport · ETA: May 28th</div>
+                                <div class="flex justify-between"><span class="font-bold">Group Booking (12 pax)</span><span
+                                        class="badge-warning px-2 py-0.5 text-xs bg-amber-500/10 text-amber-600 rounded-full font-bold">Pending Confirm</span></div>
+                                <div class="text-sm text-secondary-text mt-1">Booking Transport · ETA: May 28th</div>
                             </div>
-                        </div><button class="btn-primary mt-6 px-5 py-2 rounded-xl">Generate Freight Manifests</button>
+                        </div><button class="btn-primary mt-6 px-5 py-2 rounded-xl">Generate Booking Reports</button>
                     </div>
                 </div>
-                <!-- SPECIMEN INVENTORY -->
+                <!-- Service Inventory -->
                 <div id="inventory" class="admin-section hidden">
                     <div class="dashboard-card p-6 reveal">
-                        <h2 class="text-2xl font-serif font-bold mb-2"><span class="text-accent">💎</span> Service Inventory</h2>
+                        <h2 class="text-2xl font-serif font-medium mb-2"><span class="text-accent">💎</span> Service Inventory</h2>
                         <p class="text-secondary-text mb-6">Manage your catalog of haircuts, minerals, and premium grooming services.</p>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div class="border border-border rounded-2xl overflow-hidden bg-hover">
-                                <img src="/assets/ul.jpg" class="w-full h-40 object-cover" />
+                                <img src="./assets/ul.jpg" class="w-full h-40 object-cover" />
                                 <div class="p-4">
-                                    <h3 class="font-bold text-lg">Imperial Topaz</h3>
+                                    <h3 class="font-medium text-lg">Imperial Topaz</h3>
                                     <p class="text-xs text-secondary-text uppercase tracking-wider mt-1">Brazilian Highlands</p>
                                     <div class="flex justify-between items-center mt-4">
                                         <span class="font-bold text-accent">$12,500</span>
@@ -539,9 +542,9 @@
                                 </div>
                             </div>
                             <div class="border border-border rounded-2xl overflow-hidden bg-hover">
-                                <img src="/assets/p2.jpg" class="w-full h-40 object-cover" />
+                                <img src="./assets/p2.jpg" class="w-full h-40 object-cover" />
                                 <div class="p-4">
-                                    <h3 class="font-bold text-lg">Fluorite Cluster</h3>
+                                    <h3 class="font-medium text-lg">Fluorite Cluster</h3>
                                     <p class="text-xs text-secondary-text uppercase tracking-wider mt-1">UV Reactive</p>
                                     <div class="flex justify-between items-center mt-4">
                                         <span class="font-bold text-accent">$8,200</span>
@@ -552,7 +555,7 @@
                             <div class="border border-border rounded-2xl overflow-hidden bg-hover flex items-center justify-center min-h-[250px] border-dashed hover:border-accent transition cursor-pointer">
                                 <div class="text-center">
                                     <i class="fa-solid fa-plus text-2xl text-secondary-text mb-2"></i>
-                                    <p class="font-bold">Add Service</p>
+                                    <p class="font-normal">Add Service</p>
                                 </div>
                             </div>
                         </div>
@@ -562,7 +565,7 @@
                 <!-- SALES & ORDERS -->
                 <div id="orders" class="admin-section hidden">
                     <div class="dashboard-card p-6 reveal">
-                        <h2 class="text-2xl font-serif font-bold mb-2"><span class="text-accent">🧾</span> Sales Ledger</h2>
+                        <h2 class="text-2xl font-serif font-medium mb-2"><span class="text-accent">🧾</span> Sales Ledger</h2>
                         <p class="text-secondary-text mb-6">Track customer purchases, pending invoices, and historical sales data.</p>
                         
                         <div class="overflow-x-auto">
@@ -600,10 +603,10 @@
                 <!-- PRIVATE VIEWINGS BOOKING -->
                 <div id="tours" class="admin-section hidden">
                     <div class="dashboard-card p-6 reveal">
-                        <h2 class="text-2xl font-serif font-bold"><span class="text-accent">🏛️</span> Private Viewings & Appraisals</h2>
+                        <h2 class="text-2xl font-serif font-medium"><span class="text-accent">🏛️</span> Private Viewings & Appraisals</h2>
                         <div class="grid md:grid-cols-2 gap-6 mt-5">
                             <div>
-                                <h3 class="font-bold mb-2">Upcoming Consultations</h3>
+                                <h3 class="font-medium mb-2">Upcoming Consultations</h3>
                                 <ul class="space-y-2">
                                     <li>May 25, 3pm - Barbershop Delegation (VIP Appraisal)</li>
                                     <li>May 26, 11am - Private Investor (Classic Haircuts)</li>
@@ -611,9 +614,9 @@
                                 </ul>
                             </div>
                             <div>
-                                <h3 class="font-bold mb-2">Bookings Calendar</h3>
+                                <h3 class="font-medium mb-2">Bookings Calendar</h3>
                                 <input type="date" class="w-full p-2 border border-border rounded-xl bg-hover" />
-                                <button class="btn-accent w-full mt-4 py-2 rounded-xl">Manage Availability</button>
+                                <button class="btn-accent w-full mt-4 py-2 rounded-xl">Manage Schedule</button>
                             </div>
                         </div>
                     </div>
@@ -622,7 +625,7 @@
                 <!-- VAULT CONFIGURATION / SETTINGS -->
                 <div id="settings" class="admin-section hidden">
                     <div class="dashboard-card p-6 reveal bg-white dark:bg-[#111827] rounded-2xl">
-                        <h2 class="text-2xl font-serif font-bold text-gray-900 dark:text-white">
+                        <h2 class="text-2xl font-serif font-medium text-gray-900 dark:text-white">
                             Vault & Operations Config
                         </h2>
                         <div class="space-y-5 mt-5">
@@ -670,7 +673,7 @@
 
                             <!-- Button -->
                             <button class="btn-accent w-full py-3 rounded-xl mt-3">
-                                Save Vault Settings
+                                Save Settings
                             </button>
                         </div>
                     </div>
@@ -682,7 +685,7 @@
             <div class="flex justify-between items-center pb-4 border-b border-border">
                 <a href="index.html" class="flex items-center gap-3">
                     <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
-                    <div class="text-2xl font-serif font-extrabold tracking-wide flex flex-col justify-center">
+                    <div class="text-2xl font-serif font-medium tracking-wide flex flex-col justify-center">
                         <span style="color: #E6B325;">TRIMZO</span>
                     </div>
                 </a>
@@ -728,7 +731,7 @@
                 <div class="lg:col-span-2">
                     <a href="index.html" class="flex items-center gap-3 mb-4">
                         <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
-                        <div class="text-2xl font-serif font-extrabold tracking-tight flex flex-col justify-center">    
+                        <div class="text-2xl font-serif font-medium tracking-tight flex flex-col justify-center">    
                             <span style="color: #E6B325;">TRIMZO</span>
                         </div>
                     </a>
@@ -740,7 +743,7 @@ Providing premium grooming services, classic haircuts, and modern styling for th
                     </div>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-bold text-xl mb-6">Our Services</h4>
+                    <h4 class="footer-heading font-medium text-xl mb-6">Our Services</h4>
                    <ul class="space-y-4">
     <li><a href="services.html" class="footer-link">Classic Haircuts</a></li>
     <li><a href="services.html" class="footer-link">Beard Trimming</a></li>
@@ -749,7 +752,7 @@ Providing premium grooming services, classic haircuts, and modern styling for th
 </ul>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-bold text-xl mb-6">Quick Links</h4>
+                    <h4 class="footer-heading font-medium text-xl mb-6">Quick Links</h4>
                     <ul class="space-y-4">
                         <li><a href="services.html" class="footer-link">Services</a></li>
                         <li><a href="about.html" class="footer-link">About Us</a></li>
@@ -759,7 +762,7 @@ Providing premium grooming services, classic haircuts, and modern styling for th
                     </ul>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-bold text-xl mb-6">Newsletter</h4>
+                    <h4 class="footer-heading font-medium text-xl mb-6">Newsletter</h4>
                     <div class="flex flex-col space-y-4">
                         <input type="email" placeholder="Email address" class="p-4 text-sm rounded-xl bg-gray-900 border border-gray-800 focus:outline-none text-white" />
                         <button class="btn-primary font-bold py-3 rounded-xl">Subscribe</button>

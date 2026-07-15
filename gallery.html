@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/assets/fav.png" type="image/jpeg">
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Haircuts | TRIMZO</title>
 
@@ -156,9 +156,9 @@
             cursor: pointer;
         }
         .btn-primary:hover, .book-btn:hover {
-            opacity: 0.88;
+            background: linear-gradient(135deg, #d4a520 0%, #4a3328 100%);
             transform: scale(1.04);
-            box-shadow: 0 6px 18px rgba(230,179,37,0.3);
+            box-shadow: 0 8px 24px rgba(230,179,37,0.45);
         }
         .btn-outline {
             background: transparent;
@@ -169,8 +169,9 @@
         }
         .btn-outline:hover {
             background: var(--color-accent);
-            color: #FFFFFF !important;
-            box-shadow: 0 4px 12px rgba(230,179,37,0.25);
+            color: #1a1a1a !important;
+            box-shadow: 0 6px 18px rgba(230,179,37,0.35);
+            transform: translateY(-1px);
         }
         html[data-theme='dark'] .btn-outline {
             color: #E6B325;
@@ -178,7 +179,8 @@
         }
         html[data-theme='dark'] .btn-outline:hover {
             background: #E6B325;
-            color: #000;
+            color: #1a1a1a !important;
+            box-shadow: 0 6px 18px rgba(230,179,37,0.35);
         }
         .btn-cta-white {
             background: white;
@@ -187,9 +189,10 @@
             cursor: pointer;
         }
         .btn-cta-white:hover {
-            background: #f3f4f6;
+            background: #E6B325;
+            color: #1a1a1a;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 24px rgba(230,179,37,0.3);
         }
     </style>
 </head>
@@ -200,7 +203,7 @@
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between h-[70px]">
             <a href="index.html" class="flex items-center gap-3">
                 <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
-                <div class="text-2xl font-serif font-extrabold tracking-tight flex flex-col justify-center">    
+                <div class="text-2xl font-serif font-medium tracking-tight flex flex-col justify-center">    
                     <span style="color: #E6B325;">TRIMZO</span>
                 </div>
             </a>
@@ -259,7 +262,7 @@
                             class="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-bold text-xs uppercase tracking-widest mb-6">
                             The Gallery
                         </span>
-                        <h1 class="text-4xl md:text-6xl font-serif font-bold text-primary-text mb-8 leading-tight">
+                        <h1 class="text-5xl md:text-7xl font-serif font-medium text-primary-text mb-8 leading-tight">
                             Our <br><span class="italic text-accent">Masterpieces.</span>
                         </h1>
                         <p class="text-secondary-text text-lg leading-relaxed mb-8">
@@ -281,7 +284,7 @@
                     </div>
                     <div class="w-full lg:w-1/2 relative">
                         <div class="relative rounded-[3rem] overflow-hidden shadow-2xl border border-border h-[300px] lg:h-[450px]">
-                            <img src="/assets/83923b08-b5e3-4443-8ae4-9f03f5f599b2.png" alt="Dinosaur Fossil Specimen"
+                            <img src="./assets/83923b08-b5e3-4443-8ae4-9f03f5f599b2.png" alt="Dinosaur Fossil Service"
                                 class="w-full h-full object-cover object-[center_20%]">
                         </div>
 
@@ -296,7 +299,7 @@
                 
                 <!-- Filter Header -->
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-5xl font-serif font-bold text-primary-text mb-6">Our <span class="italic text-accent">Portfolio</span></h2>
+                    <h2 class="text-4xl md:text-6xl font-serif font-medium text-primary-text mb-6">Our <span class="italic text-accent">Portfolio</span></h2>
                     <div class="flex flex-wrap justify-center gap-4 filter-container">
                         <button data-filter="all" class="filter-btn active px-6 py-2 rounded-full font-bold text-sm transition-colors cursor-pointer">All Works</button>
                         <button data-filter="haircut" class="filter-btn px-6 py-2 rounded-full border border-border text-secondary-text hover:border-[#E6B325] hover:text-[#E6B325] font-bold text-sm transition-colors cursor-pointer">Haircuts</button>
@@ -312,8 +315,8 @@
                     <div data-category="haircut" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
                         <img src="./assets/gal_fade.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Precision Fade</h4>
-                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Haircut</p>
+                            <h4 class="text-white font-serif font-medium text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Precision Fade</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-normal translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Haircut</p>
                         </div>
                     </div>
 
@@ -321,8 +324,8 @@
                     <div data-category="shop" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
                         <img src="./assets/barber_action1.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Master at Work</h4>
-                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Shop Life</p>
+                            <h4 class="text-white font-serif font-medium text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Master at Work</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-normal translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Shop Life</p>
                         </div>
                     </div>
 
@@ -330,8 +333,8 @@
                     <div data-category="beard" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
                         <img src="./assets/gal_beard.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Executive Sculpt</h4>
-                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Beards</p>
+                            <h4 class="text-white font-serif font-medium text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Executive Sculpt</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-normal translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Beards</p>
                         </div>
                     </div>
 
@@ -339,8 +342,8 @@
                     <div data-category="beard" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
                         <img src="./assets/svc_shave.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Hot Towel Shave</h4>
-                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Beards</p>
+                            <h4 class="text-white font-serif font-medium text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Hot Towel Shave</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-normal translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Beards</p>
                         </div>
                     </div>
 
@@ -348,8 +351,8 @@
                     <div data-category="haircut" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
                         <img src="./assets/home2_gal1.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Textured Crop</h4>
-                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Haircut</p>
+                            <h4 class="text-white font-serif font-medium text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Textured Crop</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-normal translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Haircut</p>
                         </div>
                     </div>
 
@@ -357,8 +360,8 @@
                     <div data-category="shop" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
                         <img src="./assets/about_process1.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">The Consultation</h4>
-                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Shop Life</p>
+                            <h4 class="text-white font-serif font-medium text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">The Consultation</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-normal translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Shop Life</p>
                         </div>
                     </div>
 
@@ -366,8 +369,8 @@
                     <div data-category="shop" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
                         <img src="./assets/barber_action2.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Scissor Work</h4>
-                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Shop Life</p>
+                            <h4 class="text-white font-serif font-medium text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Scissor Work</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-normal translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Shop Life</p>
                         </div>
                     </div>
 
@@ -375,8 +378,8 @@
                     <div data-category="haircut" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
                         <img src="./assets/gal_pompadour.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Classic Pompadour</h4>
-                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Haircut</p>
+                            <h4 class="text-white font-serif font-medium text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Classic Pompadour</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-normal translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Haircut</p>
                         </div>
                     </div>
 
@@ -384,8 +387,8 @@
                     <div data-category="haircut" class="gallery-item relative transition-all duration-300 ease-in-out group rounded-3xl overflow-hidden shadow-lg cursor-pointer">
                         <img src="./assets/home2_svc_modern.png" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                            <h4 class="text-white font-serif font-bold text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Skin Fade</h4>
-                            <p class="text-accent text-xs uppercase tracking-widest font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Haircut</p>
+                            <h4 class="text-white font-serif font-medium text-2xl mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Skin Fade</h4>
+                            <p class="text-accent text-xs uppercase tracking-widest font-normal translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Haircut</p>
                         </div>
                     </div>
 
@@ -401,21 +404,21 @@
                         <div class="w-16 h-16 mx-auto rounded-full bg-accent/20 flex items-center justify-center mb-6">
                             <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
                         </div>
-                        <h3 class="text-xl font-bold text-primary-text mb-3">Master Barbers</h3>
+                        <h3 class="text-xl font-medium text-primary-text mb-3">Master Barbers</h3>
                         <p class="text-secondary-text">Highly trained professionals with years of experience in classic and modern styles.</p>
                     </div>
                     <div>
                         <div class="w-16 h-16 mx-auto rounded-full bg-accent/20 flex items-center justify-center mb-6">
                             <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
                         </div>
-                        <h3 class="text-xl font-bold text-primary-text mb-3">Premium Products</h3>
+                        <h3 class="text-xl font-medium text-primary-text mb-3">Premium Products</h3>
                         <p class="text-secondary-text">We use only the finest grooming products to ensure your hair and beard stay healthy.</p>
                     </div>
                     <div>
                         <div class="w-16 h-16 mx-auto rounded-full bg-accent/20 flex items-center justify-center mb-6">
                             <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
-                        <h3 class="text-xl font-bold text-primary-text mb-3">Relaxing Vibe</h3>
+                        <h3 class="text-xl font-medium text-primary-text mb-3">Relaxing Vibe</h3>
                         <p class="text-secondary-text">Enjoy a complimentary beverage and unwind in our luxurious, stress-free environment.</p>
                     </div>
                 </div>
@@ -428,7 +431,7 @@
             <div class="absolute inset-0 bg-black/70"></div>
             <div class="container mx-auto px-6 relative z-10 text-center">
                 <span class="inline-block px-4 py-1.5 rounded-full bg-accent/20 text-accent font-bold text-xs uppercase tracking-widest mb-6">Take The Next Step</span>
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-8">Ready for your <span class="italic text-accent">best look?</span></h2>
+                <h2 class="text-4xl md:text-6xl font-serif font-medium text-white mb-8">Ready for your <span class="italic text-accent">best look?</span></h2>
                 <a href="#" class="inline-block btn-primary px-10 py-4 rounded-xl font-bold text-white shadow-lg transition-transform hover:-translate-y-1">Book Your Appointment Now</a>
             </div>
         </section>
@@ -440,7 +443,7 @@
             <div class="flex justify-between items-center pb-4 border-b border-border">
                 <a href="index.html" class="flex items-center gap-3">
                     <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
-                    <div class="text-2xl font-serif font-extrabold tracking-wide flex flex-col justify-center">
+                    <div class="text-2xl font-serif font-medium tracking-wide flex flex-col justify-center">
                         <span style="color: #E6B325;">TRIMZO</span>
                     </div>
                 </a>
@@ -486,7 +489,7 @@
                 <div class="lg:col-span-2">
                     <a href="index.html" class="flex items-center gap-3 mb-4">
                         <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
-                        <div class="text-2xl font-serif font-extrabold tracking-tight flex flex-col justify-center">    
+                        <div class="text-2xl font-serif font-medium tracking-tight flex flex-col justify-center">    
                             <span style="color: #E6B325;">TRIMZO</span>
                         </div>
                     </a>
@@ -498,7 +501,7 @@ Providing premium grooming services, classic haircuts, and modern styling for th
                     </div>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-bold text-xl mb-6">Our Services</h4>
+                    <h4 class="footer-heading font-medium text-xl mb-6">Our Services</h4>
                    <ul class="space-y-4">
     <li><a href="services.html" class="footer-link">Classic Haircuts</a></li>
     <li><a href="services.html" class="footer-link">Beard Trimming</a></li>
@@ -507,7 +510,7 @@ Providing premium grooming services, classic haircuts, and modern styling for th
 </ul>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-bold text-xl mb-6">Quick Links</h4>
+                    <h4 class="footer-heading font-medium text-xl mb-6">Quick Links</h4>
                     <ul class="space-y-4">
                         <li><a href="services.html" class="footer-link">Services</a></li>
                         <li><a href="about.html" class="footer-link">About Us</a></li>
@@ -517,7 +520,7 @@ Providing premium grooming services, classic haircuts, and modern styling for th
                     </ul>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-bold text-xl mb-6">Newsletter</h4>
+                    <h4 class="footer-heading font-medium text-xl mb-6">Newsletter</h4>
                     <div class="flex flex-col space-y-4">
                         <input type="email" placeholder="Email address" class="p-4 text-sm rounded-xl bg-gray-900 border border-gray-800 focus:outline-none text-white" />
                         <button class="btn-primary font-bold py-3 rounded-xl">Subscribe</button>

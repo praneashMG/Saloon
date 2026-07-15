@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#0d0d0d"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a853"/>
+      <stop offset="100%" style="stop-color:#b8860b"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="url(#gold)" stroke-width="1.5" opacity="0.4"/>
+  <!-- Scissors icon -->
+  <g transform="translate(32,32)" fill="none" stroke="url(#gold)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Top blade circle -->
+    <circle cx="-8" cy="-12" r="6" />
+    <!-- Bottom blade circle -->
+    <circle cx="-8" cy="12" r="6" />
+    <!-- Blade lines crossing -->
+    <line x1="-3.5" y1="-7.5" x2="14" y2="6" />
+    <line x1="-3.5" y1="7.5" x2="14" y2="-6" />
+  </g>
+</svg>

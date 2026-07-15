@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/assets/fav.png" type="image/jpeg">
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Barbershop &amp; Men's Grooming Salon | TRIMZO</title>
 
@@ -145,9 +145,9 @@
             cursor: pointer;
         }
         .btn-primary:hover, .book-btn:hover {
-            opacity: 0.88;
+            background: linear-gradient(135deg, #d4a520 0%, #4a3328 100%);
             transform: scale(1.04);
-            box-shadow: 0 6px 18px rgba(230,179,37,0.3);
+            box-shadow: 0 8px 24px rgba(230,179,37,0.45);
         }
         .btn-outline {
             background: transparent;
@@ -158,8 +158,9 @@
         }
         .btn-outline:hover {
             background: var(--color-accent);
-            color: #FFFFFF !important;
-            box-shadow: 0 4px 12px rgba(230,179,37,0.25);
+            color: #1a1a1a !important;
+            box-shadow: 0 6px 18px rgba(230,179,37,0.35);
+            transform: translateY(-1px);
         }
         html[data-theme='dark'] .btn-outline {
             color: #E6B325;
@@ -167,7 +168,8 @@
         }
         html[data-theme='dark'] .btn-outline:hover {
             background: #E6B325;
-            color: #000;
+            color: #1a1a1a !important;
+            box-shadow: 0 6px 18px rgba(230,179,37,0.35);
         }
         .btn-cta-white {
             background: white;
@@ -176,9 +178,10 @@
             cursor: pointer;
         }
         .btn-cta-white:hover {
-            background: #f3f4f6;
+            background: #E6B325;
+            color: #1a1a1a;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 24px rgba(230,179,37,0.3);
         }
     </style>
 </head>
@@ -188,7 +191,7 @@
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between h-[70px]">
             <a href="index.html" class="flex items-center gap-3">
                 <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
-                <div class="text-2xl font-serif font-extrabold tracking-tight flex flex-col justify-center">    
+                <div class="text-2xl font-serif font-medium tracking-tight flex flex-col justify-center">    
                     <span style="color: #E6B325;">TRIMZO</span>
                 </div>
             </a>
@@ -262,7 +265,7 @@
                 </span>
 
                 <!-- Heading -->
-                <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-primary-text mb-5 leading-[1.05]">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight text-primary-text mb-5 leading-[1.05]">
 
                     Fossil &
                     <span class="text-accent italic font-serif">
@@ -271,7 +274,7 @@
 
                     <br>
 
-                    Specimen Dealer
+                    Service Dealer
 
                 </h1>
 
@@ -314,8 +317,8 @@
                 <div class="h-[320px] md:h-[400px] lg:h-[520px] rounded-[2rem] overflow-hidden border border-border shadow-2xl">
 
                     <img
-                        src="/assets/barbershop_hero.png"
-                        alt="Hero Specimen"
+                        src="./assets/barbershop_hero.png"
+                        alt="Hero Service"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                     >
 
@@ -335,7 +338,7 @@
 <section class="py-24 bg-hover/10">
     <div class="container mx-auto px-6 lg:px-12">
         <div class="text-center max-w-2xl mx-auto mb-16">
-            <h2 class="text-3xl md:text-5xl font-bold text-primary-text mb-4 leading-tight">Our Premium Services</h2>
+            <h2 class="text-4xl md:text-6xl font-medium text-primary-text mb-4 leading-tight">Our Premium Services</h2>
             <p class="text-secondary-text">Expert cuts, traditional shaves, and top-tier grooming tailored for you.</p>
         </div>
 
@@ -344,7 +347,7 @@
                 <img src="./assets/svc_haircut.png" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                 <div class="absolute bottom-0 p-8">
-                    <h3 class="text-3xl font-bold text-white mt-2">Classic Haircuts</h3>
+                    <h3 class="text-2xl font-medium text-white mt-2">Classic Haircuts</h3>
                     <p class="text-white/70 mt-2">Timeless & Modern Styles</p>
                 </div>
             </div>
@@ -352,19 +355,19 @@
             <div class="md:col-span-2 lg:col-span-3 relative rounded-3xl overflow-hidden group cursor-pointer border border-border">
                 <img src="./assets/svc_beard.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 <div class="absolute inset-0 bg-black/40"></div>
-                <div class="absolute inset-0 flex items-center justify-center"><h3 class="text-2xl font-bold text-white">Beard Trimming</h3></div>
+                <div class="absolute inset-0 flex items-center justify-center"><h3 class="text-2xl font-medium text-white">Beard Trimming</h3></div>
             </div>
 
             <div class="md:col-span-1 lg:col-span-1 relative rounded-3xl overflow-hidden group cursor-pointer border border-border">
                 <img src="./assets/svc_shave.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform">
                 <div class="absolute inset-0 bg-black/40"></div>
-                <div class="absolute inset-0 flex items-center justify-center"><h3 class="text-xl font-bold text-white">Hot Shave</h3></div>
+                <div class="absolute inset-0 flex items-center justify-center"><h3 class="text-xl font-medium text-white">Hot Shave</h3></div>
             </div>
 
             <div class="md:col-span-1 lg:col-span-2 relative rounded-3xl overflow-hidden group cursor-pointer border border-border">
                 <img src="./assets/svc_styling.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform">
                 <div class="absolute inset-0 bg-black/40"></div>
-                <div class="absolute inset-0 flex items-center justify-center"><h3 class="text-xl font-bold text-white">Styling</h3></div>
+                <div class="absolute inset-0 flex items-center justify-center"><h3 class="text-xl font-medium text-white">Styling</h3></div>
             </div>
         </div>
     </div>
@@ -380,7 +383,7 @@
                     Our Expertise
                 </span>
 
-                <h2 class="text-4xl md:text-5xl font-extrabold leading-tight text-primary-text mb-6">
+                <h2 class="text-4xl md:text-6xl font-medium leading-tight text-primary-text mb-6">
                     Millions of Years <br>
                     Preserved in Stone
                 </h2>
@@ -413,7 +416,7 @@
                         <i class="fas fa-dragon"></i>
                     </div>
 
-                    <h4 class="text-2xl font-bold text-primary-text mb-4">
+                    <h4 class="text-2xl font-medium text-primary-text mb-4">
                         Classic Haircuts
                     </h4>
 
@@ -428,7 +431,7 @@
                         <i class="fas fa-water"></i>
                     </div>
 
-                    <h4 class="text-2xl font-bold text-primary-text mb-4">
+                    <h4 class="text-2xl font-medium text-primary-text mb-4">
                         Ancient Marine Life
                     </h4>
 
@@ -443,7 +446,7 @@
                         <i class="fas fa-meteor"></i>
                     </div>
 
-                    <h4 class="text-2xl font-bold text-primary-text mb-4">
+                    <h4 class="text-2xl font-medium text-primary-text mb-4">
                         Meteorite Collection
                     </h4>
 
@@ -458,7 +461,7 @@
                         <i class="fas fa-gem"></i>
                     </div>
 
-                    <h4 class="text-2xl font-bold text-primary-text mb-4">
+                    <h4 class="text-2xl font-medium text-primary-text mb-4">
                         Classic Atmosphere
                     </h4>
 
@@ -483,26 +486,26 @@
                 
             </div>
             <div class="order-1 lg:order-2 ltr:text-left rtl:text-right">
-                <h2 class="text-4xl font-bold text-primary-text mb-8">Excellence is Our <span class="text-accent">Standard</span></h2>
+                <h2 class="text-4xl md:text-6xl font-medium text-primary-text mb-8">Excellence is Our <span class="text-accent">Standard</span></h2>
                 <ul class="space-y-6">
                     <li class="flex gap-4">
                         <i class="fa-solid fa-circle-check text-accent mt-1"></i>
                         <div>
-                            <h4 class="font-bold text-lg">Expert Consultation</h4>
+                            <h4 class="font-medium text-lg">Expert Consultation</h4>
                             <p class="text-secondary-text text-sm">Every service begins with a thorough consultation to match your unique style.</p>
                         </div>
                     </li>
                     <li class="flex gap-4">
                         <i class="fa-solid fa-circle-check text-accent mt-1"></i>
                         <div>
-                            <h4 class="font-bold text-lg">Hygienic Practices</h4>
+                            <h4 class="font-medium text-lg">Hygienic Practices</h4>
                             <p class="text-secondary-text text-sm">Strict adherence to the highest sanitation standards for your safety and comfort.</p>
                         </div>
                     </li>
                     <li class="flex gap-4">
                         <i class="fa-solid fa-circle-check text-accent mt-1"></i>
                         <div>
-                            <h4 class="font-bold text-lg">Tailored Experience</h4>
+                            <h4 class="font-medium text-lg">Tailored Experience</h4>
                             <p class="text-secondary-text text-sm">Custom-tailored services designed to leave you looking and feeling your absolute best.</p>
                         </div>
                     </li>
@@ -517,7 +520,7 @@
     <div class="container mx-auto px-6">
         <div class="flex flex-col md:flex-row justify-between items-end mb-12">
             <div>
-                <h2 class="text-4xl font-bold text-primary-text mb-4">Our Masterpieces</h2>
+                <h2 class="text-4xl md:text-6xl font-medium text-primary-text mb-4">Our Masterpieces</h2>
                 <p class="text-secondary-text">A showcase of our finest cuts and styling work.</p>
             </div>
             
@@ -529,17 +532,17 @@
                     <img src="./assets/gal_pompadour.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
                 </div>
                 <div class="flex justify-between items-center">
-                    <h4 class="font-bold text-lg">Burmese Hot Shave Inclusions</h4>
+                    <h4 class="font-medium text-lg">Burmese Hot Shave Inclusions</h4>
                     <span class="text-accent font-semibold">$45</span>
                 </div>
                 <p class="text-xs text-secondary-text uppercase tracking-widest mt-1">Classic Style</p>
             </div>
             <div class="group">
                 <div class="rounded-2xl overflow-hidden mb-4 border border-border aspect-square">
-                    <img src="/assets/83923b08-b5e3-4443-8ae4-9f03f5f599b2.png" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform">
+                    <img src="./assets/83923b08-b5e3-4443-8ae4-9f03f5f599b2.png" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform">
                 </div>
                 <div class="flex justify-between items-center">
-                    <h4 class="font-bold text-lg">Mullet High Fade</h4>
+                    <h4 class="font-medium text-lg">Mullet High Fade</h4>
                     <span class="text-accent font-semibold">$40</span>
                 </div>
                 <p class="text-xs text-secondary-text uppercase tracking-widest mt-1">Modern Look</p>
@@ -549,7 +552,7 @@
                     <img src="./assets/gal_beard.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
                 </div>
                 <div class="flex justify-between items-center">
-                    <h4 class="font-bold text-lg">Beard Sculpting</h4>
+                    <h4 class="font-medium text-lg">Beard Sculpting</h4>
                     <span class="text-accent font-semibold">$35</span>
                 </div>
                 <p class="text-xs text-secondary-text uppercase tracking-widest mt-1">Precision Trim</p>
@@ -562,7 +565,7 @@
 <section class="py-24 bg-hover/5">
     <div class="container mx-auto px-6 lg:px-12">
         <div class="text-center mb-12 lg:mb-16">
-            <h2 class="text-4xl font-bold text-primary-text mb-4">Client Testimonials</h2>
+            <h2 class="text-4xl md:text-6xl font-medium text-primary-text mb-4">Client Testimonials</h2>
             <p class="text-secondary-text">Trusted by gentlemen who appreciate quality grooming.</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-8">
@@ -621,7 +624,7 @@
             <div class="flex justify-between items-center pb-4 border-b border-border">
                 <a href="index.html" class="flex items-center gap-3">
                     <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
-                    <div class="text-2xl font-serif font-extrabold tracking-wide flex flex-col justify-center">
+                    <div class="text-2xl font-serif font-medium tracking-wide flex flex-col justify-center">
                         <span style="color: #E6B325;">TRIMZO</span>
                     </div>
                 </a>
@@ -667,7 +670,7 @@
                 <div class="lg:col-span-2">
                     <a href="index.html" class="flex items-center gap-3 mb-4">
                         <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
-                        <div class="text-2xl font-serif font-extrabold tracking-tight flex flex-col justify-center">    
+                        <div class="text-2xl font-serif font-medium tracking-tight flex flex-col justify-center">    
                             <span style="color: #E6B325;">TRIMZO</span>
                         </div>
                     </a>
@@ -679,7 +682,7 @@ Providing premium grooming services, classic haircuts, and modern styling for th
                     </div>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-bold text-xl mb-6">Our Services</h4>
+                    <h4 class="footer-heading font-medium text-xl mb-6">Our Services</h4>
                    <ul class="space-y-4">
     <li><a href="services.html" class="footer-link">Classic Haircuts</a></li>
     <li><a href="services.html" class="footer-link">Beard Trimming</a></li>
@@ -688,7 +691,7 @@ Providing premium grooming services, classic haircuts, and modern styling for th
 </ul>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-bold text-xl mb-6">Quick Links</h4>
+                    <h4 class="footer-heading font-medium text-xl mb-6">Quick Links</h4>
                     <ul class="space-y-4">
                         <li><a href="services.html" class="footer-link">Services</a></li>
                         <li><a href="about.html" class="footer-link">About Us</a></li>
@@ -698,7 +701,7 @@ Providing premium grooming services, classic haircuts, and modern styling for th
                     </ul>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-bold text-xl mb-6">Newsletter</h4>
+                    <h4 class="footer-heading font-medium text-xl mb-6">Newsletter</h4>
                     <div class="flex flex-col space-y-4">
                         <input type="email" placeholder="Email address" class="p-4 text-sm rounded-xl bg-gray-900 border border-gray-800 focus:outline-none text-white" />
                         <button class="btn-primary font-bold py-3 rounded-xl">Subscribe</button>

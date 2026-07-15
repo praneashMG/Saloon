@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/assets/fav.png" type="image/jpeg">
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>User Dashboard | TRIMZO</title>
@@ -146,9 +146,9 @@
             cursor: pointer;
         }
         .btn-primary:hover, .book-btn:hover {
-            opacity: 0.88;
+            background: linear-gradient(135deg, #d4a520 0%, #4a3328 100%);
             transform: scale(1.04);
-            box-shadow: 0 6px 18px rgba(230,179,37,0.3);
+            box-shadow: 0 8px 24px rgba(230,179,37,0.45);
         }
         .btn-outline {
             background: transparent;
@@ -159,8 +159,9 @@
         }
         .btn-outline:hover {
             background: var(--color-accent);
-            color: #FFFFFF !important;
-            box-shadow: 0 4px 12px rgba(230,179,37,0.25);
+            color: #1a1a1a !important;
+            box-shadow: 0 6px 18px rgba(230,179,37,0.35);
+            transform: translateY(-1px);
         }
         html[data-theme='dark'] .btn-outline {
             color: #E6B325;
@@ -168,7 +169,8 @@
         }
         html[data-theme='dark'] .btn-outline:hover {
             background: #E6B325;
-            color: #000;
+            color: #1a1a1a !important;
+            box-shadow: 0 6px 18px rgba(230,179,37,0.35);
         }
         .btn-cta-white {
             background: white;
@@ -177,9 +179,10 @@
             cursor: pointer;
         }
         .btn-cta-white:hover {
-            background: #f3f4f6;
+            background: #E6B325;
+            color: #1a1a1a;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 24px rgba(230,179,37,0.3);
         }
     </style>
 </head>
@@ -191,7 +194,7 @@
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between h-[70px]">
             <a href="index.html" class="flex items-center gap-3">
                 <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
-                <div class="text-2xl font-serif font-extrabold tracking-tight flex flex-col justify-center">    
+                <div class="text-2xl font-serif font-medium tracking-tight flex flex-col justify-center">    
                     <span style="color: #E6B325;">TRIMZO</span>
                 </div>
             </a>
@@ -285,15 +288,15 @@
                 <!-- DASHBOARD OVERVIEW -->
                 <div id="overview" class="admin-section">
                     <div class="mb-8">
-                        <h1 class="text-3xl font-serif font-bold text-primary-text">Welcome back, Eleanor Weiss!</h1>
-                        <p class="text-secondary-text mt-1">Here is a summary of your private collection and vault activity.</p>
+                        <h1 class="text-3xl font-serif font-medium text-primary-text">Welcome back, Eleanor Weiss!</h1>
+                        <p class="text-secondary-text mt-1">Here is a summary of your private collection and Salon activity.</p>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div class="dashboard-card p-6">
                             <div class="flex justify-between">
                                 <div>
                                     <p class="text-secondary-text text-sm">VIP Status</p>
-                                    <p class="text-2xl font-black mt-1">Barbershop Barber</p>
+                                    <p class="text-2xl font-medium mt-1">Barbershop Barber</p>
                                     <p class="text-xs text-emerald-600 mt-2">✓ Premium bidding access</p>
                                 </div>
                                 <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
@@ -305,7 +308,7 @@
                             <div class="flex justify-between">
                                 <div>
                                     <p class="text-secondary-text text-sm">Next Acquisition</p>
-                                    <p class="text-2xl font-black mt-1">May 2026</p>
+                                    <p class="text-2xl font-medium mt-1">May 2026</p>
                                     <p class="text-xs text-accent mt-2">Est. delivery: May 28-30</p>
                                 </div>
                                 <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
@@ -317,7 +320,7 @@
                             <div class="flex justify-between">
                                 <div>
                                     <p class="text-secondary-text text-sm">Saved Services</p>
-                                    <p class="text-2xl font-black mt-1">12</p>
+                                    <p class="text-2xl font-medium mt-1">12</p>
                                     <p class="text-xs text-accent mt-2">+3 new premium gems added</p>
                                 </div>
                                 <div class="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
@@ -329,35 +332,35 @@
 
                     <!-- Current Shipment Progress -->
                     <div class="dashboard-card p-6 mt-6">
-                        <h3 class="font-bold text-lg mb-2">💎 Acquisition: "Amethyst Geode & Fluorite Cluster"</h3>
-                        <div class="flex justify-between text-sm mb-2"><span>Crating & Securing at Vault</span><span>85%</span></div>
+                        <h3 class="font-medium text-lg mb-2">💎 Acquisition: "Premium Grooming Package"</h3>
+                        <div class="flex justify-between text-sm mb-2"><span>Preparing Your Appointment</span><span>85%</span></div>
                         <div class="w-full bg-border rounded-full h-2">
                             <div class="progress-bar rounded-full w-[85%] bg-accent h-2"></div>
                         </div>
-                        <p class="text-secondary-text text-sm mt-4">Includes: 1.2-ton Amethyst Geode (barbershop grade), UV-Reactive Fluorite, and digital authentication certificates.</p>
-                        <button class="btn-outline px-5 py-2 rounded-xl text-sm mt-4 font-semibold">Track Secure Freight <i class="fa-solid fa-map-location-dot ml-1"></i></button>
+                        <p class="text-secondary-text text-sm mt-4">Includes: Hot towel shave, executive haircut, facial treatment, and premium styling session.</p>
+                        <button class="btn-outline px-5 py-2 rounded-xl text-sm mt-4 font-semibold">Track My Booking <i class="fa-solid fa-calendar-check ml-1"></i></button>
                     </div>
 
-                    <!-- Recent Saved Specimens Activity -->
+                    <!-- Recent Saved Services Activity -->
                     <div class="dashboard-card p-6 mt-6">
                         <div class="flex justify-between items-center">
-                            <h3 class="font-bold text-lg">📝 Recently Saved to Vault</h3><a href="#"
+                            <h3 class="font-medium text-lg">📝 Recently Saved Services</h3><a href="#"
                                 data-section="saved" class="text-accent text-sm hover:underline">View all</a>
                         </div>
                         <div class="space-y-3 mt-4">
                             <div class="p-3 bg-hover rounded-xl flex items-center justify-between border border-transparent hover:border-border transition">
                                 <div>
-                                    <p class="font-semibold">Megalodon Tooth (6.5 inch)</p>
-                                    <p class="text-sm text-secondary-text mt-1">"Pristine enamel, sharp serrations. South Carolina."</p>
+                                    <p class="font-semibold">Classic Executive Cut</p>
+                                    <p class="text-sm text-secondary-text mt-1">"Precision fade with hot towel finish. Booked May 15."</p>
                                 </div>
-                                <span class="font-bold text-accent bg-accent/10 px-3 py-1 rounded-full text-xs">$4,500</span>
+                                <span class="font-bold text-accent bg-accent/10 px-3 py-1 rounded-full text-xs">$85</span>
                             </div>
                             <div class="p-3 bg-hover rounded-xl flex items-center justify-between border border-transparent hover:border-border transition">
                                 <div>
-                                    <p class="font-semibold">Bismuth Crystal Staircase</p>
-                                    <p class="text-sm text-secondary-text mt-1">"Iridescent oxidation, perfect geometric structure."</p>
+                                    <p class="font-semibold">Beard Sculpting Package</p>
+                                    <p class="text-sm text-secondary-text mt-1">"Full beard trim, oil treatment, and styling. Saved for June."</p>
                                 </div>
-                                <span class="font-bold text-accent bg-accent/10 px-3 py-1 rounded-full text-xs">$850</span>
+                                <span class="font-bold text-accent bg-accent/10 px-3 py-1 rounded-full text-xs">$65</span>
                             </div>
                         </div>
                     </div>
@@ -366,23 +369,23 @@
                 <!-- MY QUARTERLY SHIPMENTS (TRACK, MANAGE) -->
                 <div id="shipments" class="admin-section hidden">
                     <div class="dashboard-card p-6">
-                        <h2 class="text-2xl font-serif font-bold mb-6">📦 Logistics & Freight Tracking</h2>
+                        <h2 class="text-2xl font-serif font-medium mb-6">📦 Appointment Tracking</h2>
                         <div class="space-y-5">
                             <div class="border border-border rounded-xl p-5 bg-hover">
                                 <div class="flex justify-between flex-wrap border-b border-border pb-3 mb-3">
-                                    <span class="font-bold text-lg">May 2026 - Geode Acquisition</span>
+                                    <span class="font-bold text-lg">May 2026 - Premium Package</span>
                                     <span class="bg-emerald-500/10 text-emerald-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">In Transit · May 24</span>
                                 </div>
                                 <p class="text-sm text-secondary-text">Expected delivery: 28 May · Carrier: Brinks Secure Transit #GE2390A</p>
-                                <button class="btn-accent px-4 py-2 rounded-xl text-sm mt-4 font-bold"><i class="fa-solid fa-satellite-dish mr-2"></i> Live GPS tracking</button>
+                                <button class="btn-accent px-4 py-2 rounded-xl text-sm mt-4 font-bold"><i class="fa-solid fa-calendar-days mr-2"></i> View Appointment Details</button>
                             </div>
                             <div class="border border-border rounded-xl p-5 bg-hover">
                                 <div class="flex justify-between flex-wrap border-b border-border pb-3 mb-3">
-                                    <span class="font-bold text-lg">Feb 2026 - Triceratops Horn Haircut</span>
-                                    <span class="bg-secondary-text/20 text-secondary-text px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Delivered Feb 12</span>
+                                    <span class="font-bold text-lg">Feb 2026 - Executive Grooming</span>
+                                    <span class="bg-secondary-text/20 text-secondary-text px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Completed Feb 12</span>
                                 </div>
                                 <p class="text-sm text-secondary-text">Condition: Mint · Includes physical personal consultation document.</p>
-                                <a href="#" class="text-accent text-sm font-bold mt-4 inline-block hover:underline"><i class="fa-solid fa-file-pdf mr-1"></i> Download Digital Certificate</a>
+                                <a href="#" class="text-accent text-sm font-bold mt-4 inline-block hover:underline"><i class="fa-solid fa-receipt mr-1"></i> Download Receipt</a>
                             </div>
                         </div>
                     </div>
@@ -391,7 +394,7 @@
                 <!-- ORDER HISTORY -->
                 <div id="orders" class="admin-section hidden">
                     <div class="dashboard-card p-6">
-                        <h2 class="text-2xl font-serif font-bold">🧾 Order History</h2>
+                        <h2 class="text-2xl font-serif font-medium">🧾 Order History</h2>
                         <p class="mb-4 text-secondary-text">View your past purchases, invoices, and service details.</p>
                         <div class="border border-border rounded-xl p-4 mt-4 text-center">
                             <p class="text-secondary-text text-sm">No recent orders to display.</p>
@@ -399,11 +402,11 @@
                     </div>
                 </div>
 
-                <!-- SAVED SPECIMENS -->
+                <!-- SAVED ServiceS -->
                 <div id="saved" class="admin-section hidden">
                     <div class="dashboard-card p-6">
-                        <h2 class="text-2xl font-serif font-bold">💎 Saved Services</h2>
-                        <p class="mb-4 text-secondary-text">Your premium list of favorite haircuts, minerals, and grooming items.</p>
+                        <h2 class="text-2xl font-serif font-medium">💎 Saved Services</h2>
+                        <p class="mb-4 text-secondary-text">Your premium list of favorite haircuts, and grooming treatments.</p>
                         <div class="border border-border rounded-xl p-4 mt-4 text-center">
                             <p class="text-secondary-text text-sm">You haven't saved any services yet.</p>
                         </div>
@@ -413,29 +416,29 @@
                 <!-- PRIVATE VIEWINGS BOOKING -->
                 <div id="tours" class="admin-section hidden">
                     <div class="dashboard-card p-6">
-                        <h2 class="text-2xl font-serif font-bold">🏛️ Private Gallery Viewings</h2>
-                        <p class="mb-4 text-secondary-text">Schedule an exclusive consultation with our grooming curators.</p>
+                        <h2 class="text-2xl font-serif font-medium">🏛️ Book a Consultation</h2>
+                        <p class="mb-4 text-secondary-text">Schedule an exclusive consultation with our master barbers.</p>
                         <div class="flex flex-col md:flex-row gap-6">
                             <div class="flex-1 bg-hover border border-border rounded-xl p-5">
-                                <h3 class="font-bold text-lg">🎟️ Virtual Exhibition Tour</h3>
-                                <p class="text-sm mt-2 text-secondary-text">High-definition remote viewing of requested services with a barber.</p>
+                                <h3 class="font-medium text-lg">🎟️ Video Consultation</h3>
+                                <p class="text-sm mt-2 text-secondary-text">Discuss your desired style with a master barber via video call.</p>
                                 <label class="block mt-4 text-sm font-bold">Select date: <input type="date" class="ml-2 p-1.5 border border-border rounded bg-background w-full mt-2"></label>
-                                <button class="btn-primary w-full mt-4 py-2 rounded-xl text-sm font-bold">Schedule Virtual Tour</button>
+                                <button class="btn-primary w-full mt-4 py-2 rounded-xl text-sm font-bold">Book Online Consultation</button>
                             </div>
                             <div class="flex-1 bg-hover border border-border rounded-xl p-5">
-                                <h3 class="font-bold text-lg">🔬 In-Person Appraisal</h3>
-                                <p class="text-sm mt-2 text-secondary-text">Visit our vault for hands-on inspection and excellence verification.</p>
+                                <h3 class="font-medium text-lg">🔬 Walk-In Consultation</h3>
+                                <p class="text-sm mt-2 text-secondary-text">Visit our salon for a personalized style assessment.</p>
                                 <label class="block mt-4 text-sm font-bold">Party size: 
                                     <select class="ml-2 p-1.5 border border-border rounded bg-background w-full mt-2">
                                         <option>1-2 people</option>
                                         <option>3-4 people</option>
                                     </select>
                                 </label>
-                                <button class="btn-primary w-full mt-4 py-2 rounded-xl text-sm font-bold">Request Vault Access</button>
+                                <button class="btn-primary w-full mt-4 py-2 rounded-xl text-sm font-bold">Book In-Person Visit</button>
                             </div>
                         </div>
                         <div class="mt-6 text-center text-sm text-accent bg-accent/10 py-3 rounded-xl font-bold">
-                            *VIP Curators receive priority booking and complimentary service on acquired items.
+                            *Gold Members enjoy priority scheduling and 15% off all premium services.
                         </div>
                     </div>
                 </div>
@@ -443,30 +446,30 @@
                 <!-- MANAGE SUBSCRIPTION / PREFERENCES -->
                 <div id="subscription" class="admin-section hidden">
                     <div class="dashboard-card p-6">
-                        <h2 class="text-2xl font-serif font-bold">⚙️ My Client Profile</h2>
+                        <h2 class="text-2xl font-serif font-medium">⚙️ My Client Profile</h2>
                         <div class="grid md:grid-cols-2 gap-6 mt-5">
                             <div class="border border-border p-5 rounded-xl bg-hover">
-                                <h3 class="font-bold text-lg">VIP Status</h3>
-                                <p class="text-accent text-xl font-bold mt-1">Barbershop Barber Tier</p>
-                                <p class="text-secondary-text text-sm mt-2">Includes early access to premium auctions, dedicated support, and freight insurance.</p>
-                                <button class="btn-outline w-full mt-4 py-2 text-sm rounded-xl font-bold">Upgrade Tier</button>
+                                <h3 class="font-medium text-lg">VIP Status</h3>
+                                <p class="text-accent text-xl font-normal mt-1">Gold Member</p>
+                                <p class="text-secondary-text text-sm mt-2">Includes priority booking, complimentary styling products, and VIP lounge access.</p>
+                                <button class="btn-outline w-full mt-4 py-2 text-sm rounded-xl font-bold">Upgrade Membership</button>
                             </div>
                             <div class="border border-border p-5 rounded-xl bg-hover">
-                                <h3 class="font-bold text-lg">Shipping Logistics</h3>
+                                <h3 class="font-medium text-lg">Contact Details</h3>
                                 <p class="text-secondary-text text-sm mt-2">1200 Grooming Ave, Suite 400<br/>Denver, CO 80202</p>
-                                <button class="text-accent text-sm mt-2 font-bold hover:underline">Update secure address</button>
+                                <button class="text-accent text-sm mt-2 font-bold hover:underline">Update address</button>
                                 
-                                <h3 class="font-bold mt-6 text-lg">Acquisition Preferences</h3>
-                                <p class="text-secondary-text text-sm mt-2">Styling, Premium Gems, Classic Teeth</p>
-                                <button class="text-accent text-sm mt-2 font-bold hover:underline">Edit client profile</button>
+                                <h3 class="font-medium mt-6 text-lg">Style Preferences</h3>
+                                <p class="text-secondary-text text-sm mt-2">Fades, Beard Grooming, Hot Towel Shave</p>
+                                <button class="text-accent text-sm mt-2 font-bold hover:underline">Edit preferences</button>
                             </div>
                         </div>
                         <div class="mt-6 p-5 border border-border bg-background rounded-xl flex flex-col sm:flex-row justify-between items-center gap-4">
                             <div>
-                                <p class="font-bold text-lg">Next Retainer Billing: August 1, 2026</p>
-                                <p class="text-sm text-secondary-text mt-1">Annual VIP Retainer: $1,250/year</p>
+                                <p class="font-normal text-lg">Next Membership Billing: August 1, 2026</p>
+                                <p class="text-sm text-secondary-text mt-1">Annual Membership: $120/year</p>
                             </div>
-                            <button class="btn-primary px-6 py-3 rounded-xl font-bold whitespace-nowrap">Manage Billing</button>
+                            <button class="btn-primary px-6 py-3 rounded-xl font-bold whitespace-nowrap">Manage Payments</button>
                         </div>
                     </div>
                 </div>
@@ -477,7 +480,7 @@
             <div class="flex justify-between items-center pb-4 border-b border-border">
                 <a href="index.html" class="flex items-center gap-3">
                     <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
-                    <div class="text-2xl font-serif font-extrabold tracking-wide flex flex-col justify-center">
+                    <div class="text-2xl font-serif font-medium tracking-wide flex flex-col justify-center">
                         <span style="color: #E6B325;">TRIMZO</span>
                     </div>
                 </a>
@@ -523,7 +526,7 @@
                 <div class="lg:col-span-2">
                     <a href="index.html" class="flex items-center gap-3 mb-4">
                         <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
-                        <div class="text-2xl font-serif font-extrabold tracking-tight flex flex-col justify-center">    
+                        <div class="text-2xl font-serif font-medium tracking-tight flex flex-col justify-center">    
                             <span style="color: #E6B325;">TRIMZO</span>
                         </div>
                     </a>
@@ -535,7 +538,7 @@ Providing premium grooming services, classic haircuts, and modern styling for th
                     </div>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-bold text-xl mb-6">Our Services</h4>
+                    <h4 class="footer-heading font-medium text-xl mb-6">Our Services</h4>
                    <ul class="space-y-4">
     <li><a href="services.html" class="footer-link">Classic Haircuts</a></li>
     <li><a href="services.html" class="footer-link">Beard Trimming</a></li>
@@ -544,7 +547,7 @@ Providing premium grooming services, classic haircuts, and modern styling for th
 </ul>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-bold text-xl mb-6">Quick Links</h4>
+                    <h4 class="footer-heading font-medium text-xl mb-6">Quick Links</h4>
                     <ul class="space-y-4">
                         <li><a href="services.html" class="footer-link">Services</a></li>
                         <li><a href="about.html" class="footer-link">About Us</a></li>
@@ -554,7 +557,7 @@ Providing premium grooming services, classic haircuts, and modern styling for th
                     </ul>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-bold text-xl mb-6">Newsletter</h4>
+                    <h4 class="footer-heading font-medium text-xl mb-6">Newsletter</h4>
                     <div class="flex flex-col space-y-4">
                         <input type="email" placeholder="Email address" class="p-4 text-sm rounded-xl bg-gray-900 border border-gray-800 focus:outline-none text-white" />
                         <button class="btn-primary font-bold py-3 rounded-xl">Subscribe</button>

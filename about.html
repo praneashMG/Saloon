@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/assets/fav.png" type="image/jpeg">
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>About | TRIMZO</title>
 
@@ -146,9 +146,9 @@
             cursor: pointer;
         }
         .btn-primary:hover, .book-btn:hover {
-            opacity: 0.88;
+            background: linear-gradient(135deg, #d4a520 0%, #4a3328 100%);
             transform: scale(1.04);
-            box-shadow: 0 6px 18px rgba(230,179,37,0.3);
+            box-shadow: 0 8px 24px rgba(230,179,37,0.45);
         }
         .btn-outline {
             background: transparent;
@@ -159,8 +159,9 @@
         }
         .btn-outline:hover {
             background: var(--color-accent);
-            color: #FFFFFF !important;
-            box-shadow: 0 4px 12px rgba(230,179,37,0.25);
+            color: #1a1a1a !important;
+            box-shadow: 0 6px 18px rgba(230,179,37,0.35);
+            transform: translateY(-1px);
         }
         html[data-theme='dark'] .btn-outline {
             color: #E6B325;
@@ -168,7 +169,8 @@
         }
         html[data-theme='dark'] .btn-outline:hover {
             background: #E6B325;
-            color: #000;
+            color: #1a1a1a !important;
+            box-shadow: 0 6px 18px rgba(230,179,37,0.35);
         }
         .btn-cta-white {
             background: white;
@@ -177,9 +179,10 @@
             cursor: pointer;
         }
         .btn-cta-white:hover {
-            background: #f3f4f6;
+            background: #E6B325;
+            color: #1a1a1a;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 24px rgba(230,179,37,0.3);
         }
     </style>
 </head>
@@ -190,7 +193,7 @@
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between h-[70px]">
             <a href="index.html" class="flex items-center gap-3">
                 <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
-                <div class="text-2xl font-serif font-extrabold tracking-tight flex flex-col justify-center">    
+                <div class="text-2xl font-serif font-medium tracking-tight flex flex-col justify-center">    
                     <span style="color: #E6B325;">TRIMZO</span>
                 </div>
             </a>
@@ -249,7 +252,7 @@
                             class="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-bold text-xs uppercase tracking-widest mb-6">
                             The Art of Classic Grooming
                         </span>
-                        <h1 class="text-4xl md:text-6xl font-serif font-bold text-primary-text mb-8 leading-tight">
+                        <h1 class="text-5xl md:text-7xl font-serif font-medium text-primary-text mb-8 leading-tight">
                             Mastering the <span class="italic text-accent">Craft</span> of Barbering.
                         </h1>
                         <p class="text-secondary-text text-lg leading-relaxed mb-8">
@@ -285,7 +288,7 @@
         
         <!-- Heading -->
         <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-primary-text mb-5">
+            <h2 class="text-4xl md:text-6xl font-serif font-medium text-primary-text mb-5">
                 Built on <span class="text-accent italic">Precision</span>
             </h2>
 
@@ -309,7 +312,7 @@
                     <i class="fas fa-microscope"></i>
                 </div>
 
-                <h4 class="text-lg sm:text-xl font-bold text-primary-text mb-3">
+                <h4 class="text-lg sm:text-xl font-medium text-primary-text mb-3">
                     Masterful Precision
                 </h4>
 
@@ -329,7 +332,7 @@
                     <i class="fas fa-leaf "></i>
                 </div>
 
-                <h4 class="text-lg sm:text-xl font-bold text-primary-text mb-3">
+                <h4 class="text-lg sm:text-xl font-medium text-primary-text mb-3">
                     Premium Products
                 </h4>
 
@@ -349,7 +352,7 @@
                     <i class="fas fa-fingerprint"></i>
                 </div>
 
-                <h4 class="text-lg sm:text-xl font-bold text-primary-text mb-3">
+                <h4 class="text-lg sm:text-xl font-medium text-primary-text mb-3">
                     Client Satisfaction
                 </h4>
 
@@ -365,27 +368,27 @@
             <div class="container mx-auto px-6">
                 <div class="flex flex-col lg:flex-row-reverse items-center gap-16">
                     <div class="w-full lg:w-1/2">
-                        <h2 class="text-3xl md:text-5xl font-serif font-bold text-primary-text mb-8">From Classic Techniques
+                        <h2 class="text-4xl md:text-6xl font-serif font-medium text-primary-text mb-8">From Classic Techniques
                             to <span class="text-accent italic">Modern Style</span></h2>
                         <div class="space-y-8">
                             <div class="flex gap-6">
                                 <span class="text-4xl font-serif font-bold text-accent/20">01</span>
                                 <div>
-                                    <h5 class="font-bold text-primary-text text-xl mb-2">The Consultation</h5>
+                                    <h5 class="font-medium text-primary-text text-xl mb-2">The Consultation</h5>
                                     <p class="text-secondary-text">We sit down with you to understand your hair type, lifestyle, and aesthetic goals to identify your perfect signature look.</p>
                                 </div>
                             </div>
                             <div class="flex gap-6">
                                 <span class="text-4xl font-serif font-bold text-accent/20">02</span>
                                 <div>
-                                    <h5 class="font-bold text-primary-text text-xl mb-2">The Execution</h5>
+                                    <h5 class="font-medium text-primary-text text-xl mb-2">The Execution</h5>
                                     <p class="text-secondary-text">Your style is brought to life using precision tools and masterful techniques, enhancing your natural features without compromise.</p>
                                 </div>
                             </div>
                             <div class="flex gap-6">
                                 <span class="text-4xl font-serif font-bold text-accent/20">03</span>
                                 <div>
-                                    <h5 class="font-bold text-primary-text text-xl mb-2">The Finish</h5>
+                                    <h5 class="font-medium text-primary-text text-xl mb-2">The Finish</h5>
                                     <p class="text-secondary-text">Each cut is styled with top-tier pomades and finished with a hot towel shave to ensure you leave looking and feeling perfect.</p>
                                 </div>
                             </div>
@@ -434,7 +437,7 @@
                     <div class="w-full lg:w-1/2 order-2 lg:order-1">
                         <div class="relative p-1 bg-custom-gradient rounded-[2.5rem]">
                             <div class="bg-background rounded-[2.4rem] p-10 md:p-16">
-                                <h3 class="text-3xl font-serif font-bold text-primary-text mb-6">Craftsmanship is our <span
+                                <h3 class="text-2xl font-serif font-medium text-primary-text mb-6">Craftsmanship is our <span
                                         class="italic text-accent">True Asset</span></h3>
                                 <p class="text-secondary-text mb-8 italic">"In the world of barbering, a stylist is only as good as their technique. Our team consists of master barbers who have spent years perfecting the art of the classic cut."</p>
                                 <div class="flex items-center gap-4">
@@ -451,7 +454,7 @@
                         </div>
                     </div>
                     <div class="w-full lg:w-1/2 order-1 lg:order-2">
-                        <h2 class="text-3xl md:text-5xl font-serif font-bold text-primary-text mb-6">Hand-Crafted
+                        <h2 class="text-4xl md:text-6xl font-serif font-medium text-primary-text mb-6">Hand-Crafted
                             <br>Without Compromise</h2>
                         <p class="text-secondary-text text-lg leading-relaxed mb-6">
                             We specialize in precision fading and classic scissor work, a meticulous process that creates sharp, flawless styles tailored specifically for you.
@@ -481,7 +484,7 @@
                         <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-accent rounded-full blur-[100px]"></div>
                     </div>
 
-                    <h2 class="text-4xl md:text-6xl font-serif font-bold text-white mb-8 relative z-10 leading-tight">
+                    <h2 class="text-4xl md:text-6xl font-serif font-medium text-white mb-8 relative z-10 leading-tight">
                         Book Your <span class="text-accent italic">Appointment</span> Today.
                     </h2>
                     <p class="text-white/70 text-lg max-w-2xl mx-auto mb-12 relative z-10">
@@ -491,8 +494,7 @@
                         <a href="services.html"
                             class="btn-cta-white px-10 py-4 rounded-2xl font-bold text-lg shadow-xl">View Services</a>
                         <a href="contact.html"
-                            class="px-10 py-4 rounded-2xl font-bold text-lg border border-white/30 text-white hover:bg-white/10 transition-all">Private
-                            Consultation</a>
+                            class="px-10 py-4 rounded-2xl font-bold text-lg border border-white/30 text-white hover:bg-white/10 transition-all">Book Private Session\n                            Consultation</a>
                     </div>
                 </div>
             </div>
@@ -505,7 +507,7 @@
             <div class="flex justify-between items-center pb-4 border-b border-border">
                 <a href="index.html" class="flex items-center gap-3">
                     <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
-                    <div class="text-2xl font-serif font-extrabold tracking-wide flex flex-col justify-center">
+                    <div class="text-2xl font-serif font-medium tracking-wide flex flex-col justify-center">
                         <span style="color: #E6B325;">TRIMZO</span>
                     </div>
                 </a>
@@ -551,7 +553,7 @@
                 <div class="lg:col-span-2">
                     <a href="index.html" class="flex items-center gap-3 mb-4">
                         <img src="./assets/logo.png" alt="Trimzo Logo" class="h-10 w-10 object-contain rounded-full shadow-md" />
-                        <div class="text-2xl font-serif font-extrabold tracking-tight flex flex-col justify-center">    
+                        <div class="text-2xl font-serif font-medium tracking-tight flex flex-col justify-center">    
                             <span style="color: #E6B325;">TRIMZO</span>
                         </div>
                     </a>
@@ -563,7 +565,7 @@ Providing premium grooming services, classic haircuts, and modern styling for th
                     </div>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-bold text-xl mb-6">Our Services</h4>
+                    <h4 class="footer-heading font-medium text-xl mb-6">Our Services</h4>
                    <ul class="space-y-4">
     <li><a href="services.html" class="footer-link">Classic Haircuts</a></li>
     <li><a href="services.html" class="footer-link">Beard Trimming</a></li>
@@ -572,7 +574,7 @@ Providing premium grooming services, classic haircuts, and modern styling for th
 </ul>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-bold text-xl mb-6">Quick Links</h4>
+                    <h4 class="footer-heading font-medium text-xl mb-6">Quick Links</h4>
                     <ul class="space-y-4">
                         <li><a href="services.html" class="footer-link">Services</a></li>
                         <li><a href="about.html" class="footer-link">About Us</a></li>
@@ -582,7 +584,7 @@ Providing premium grooming services, classic haircuts, and modern styling for th
                     </ul>
                 </div>
                 <div>
-                    <h4 class="footer-heading font-bold text-xl mb-6">Newsletter</h4>
+                    <h4 class="footer-heading font-medium text-xl mb-6">Newsletter</h4>
                     <div class="flex flex-col space-y-4">
                         <input type="email" placeholder="Email address" class="p-4 text-sm rounded-xl bg-gray-900 border border-gray-800 focus:outline-none text-white" />
                         <button class="btn-primary font-bold py-3 rounded-xl">Subscribe</button>

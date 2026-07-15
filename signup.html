@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/assets/fav.png" type="image/jpeg">
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
     <title>Sign Up | TRIMZO</title>
     <script src="tailwind.js"></script>
     <style>
@@ -71,9 +71,9 @@
         }
 
         .btn-primary:hover {
-            opacity: 0.9;
+            background: linear-gradient(135deg, #d4a520 0%, #4a3328 100%);
             transform: translateY(-1px);
-            box-shadow: 0 8px 20px -6px rgba(230, 179, 37, 0.4);
+            box-shadow: 0 8px 20px -6px rgba(230, 179, 37, 0.5);
         }
 
         .text-accent {
@@ -387,11 +387,11 @@
                     class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay">
                 <div class="relative z-10 p-6 text-white flex flex-col items-center text-center justify-between h-full">
                     <div class="flex flex-col items-center">
-                        <a href="index.html" class="flex items-center gap-3 text-3xl font-serif font-extrabold tracking-tight">
+                        <a href="index.html" class="flex items-center gap-3 text-3xl font-serif font-medium tracking-tight">
                             <img src="./assets/logo.png" alt="Trimzo Logo" class="h-12 w-12 object-contain rounded-full shadow-md" />
                             <span style="color: #E6B325;">TRIMZO</span>
                         </a>
-                        <h2 class="text-2xl font-serif font-bold leading-tight mt-4 mb-2">
+                        <h2 class="text-2xl font-serif font-medium leading-tight mt-4 mb-2">
                             Join the <br><span style="color: #E6B325;">Elite Club</span>
                         </h2>
                         <p class="text-white/80 text-sm leading-relaxed max-w-xs">
@@ -429,13 +429,13 @@
             <div class="w-full md:w-7/12 flex items-center justify-center p-4 lg:p-6">
                 <div class="w-full max-w-md">
 
-                    <a href="index.html" class="md:hidden flex items-center justify-center gap-3 text-3xl font-serif font-extrabold tracking-tight mb-6">
+                    <a href="index.html" class="md:hidden flex items-center justify-center gap-3 text-3xl font-serif font-medium tracking-tight mb-6">
                         <img src="./assets/logo.png" alt="Trimzo Logo" class="h-12 w-12 object-contain rounded-full shadow-md" />
                         <span style="color: #E6B325;">TRIMZO</span>
                     </a>
 
                     <div class="mb-3 text-center">
-                        <h3 class="text-lg md:text-2xl font-serif font-bold mb-1 text-primary-text leading-tight">
+                        <h3 class="text-lg md:text-2xl font-serif font-medium mb-1 text-primary-text leading-tight">
                             Start Your Journey
                         </h3>
                         <p class="text-xs text-secondary-text/80 max-w-[220px] mx-auto leading-snug">
@@ -476,20 +476,13 @@
                         <div class="space-y-3">
                             <div>
                                 <label class="block text-[11px] font-bold uppercase tracking-wider mb-1 text-secondary-text">
-                                    <i class="fa-regular fa-user mr-1 text-accent"></i> First Name
+                                    <i class="fa-regular fa-user mr-1 text-accent"></i> FuLL Name
                                 </label>
                                 <input type="text" required id="firstName"
                                     class="input-field w-full px-4 py-2 rounded-xl text-sm outline-none transition"
                                     placeholder="John">
                             </div>
-                            <div>
-                                <label class="block text-[11px] font-bold uppercase tracking-wider mb-1 text-secondary-text">
-                                    Last Name
-                                </label>
-                                <input type="text" required id="lastName"
-                                    class="input-field w-full px-4 py-2 rounded-xl text-sm outline-none transition"
-                                    placeholder="Doe">
-                            </div>
+                          
                         </div>
 
                         <!-- Email -->

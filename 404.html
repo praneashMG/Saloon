@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/assets/fav.png" type="image/jpeg">
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Lost in Time | TRIMZO</title>
     <script src="tailwind.js"></script>
@@ -144,9 +144,9 @@
             cursor: pointer;
         }
         .btn-primary:hover, .book-btn:hover {
-            opacity: 0.88;
+            background: linear-gradient(135deg, #d4a520 0%, #4a3328 100%);
             transform: scale(1.04);
-            box-shadow: 0 6px 18px rgba(230,179,37,0.3);
+            box-shadow: 0 8px 24px rgba(230,179,37,0.45);
         }
         .btn-outline {
             background: transparent;
@@ -157,8 +157,9 @@
         }
         .btn-outline:hover {
             background: var(--color-accent);
-            color: #FFFFFF !important;
-            box-shadow: 0 4px 12px rgba(230,179,37,0.25);
+            color: #1a1a1a !important;
+            box-shadow: 0 6px 18px rgba(230,179,37,0.35);
+            transform: translateY(-1px);
         }
         html[data-theme='dark'] .btn-outline {
             color: #E6B325;
@@ -166,7 +167,8 @@
         }
         html[data-theme='dark'] .btn-outline:hover {
             background: #E6B325;
-            color: #000;
+            color: #1a1a1a !important;
+            box-shadow: 0 6px 18px rgba(230,179,37,0.35);
         }
         .btn-cta-white {
             background: white;
@@ -175,9 +177,10 @@
             cursor: pointer;
         }
         .btn-cta-white:hover {
-            background: #f3f4f6;
+            background: #E6B325;
+            color: #1a1a1a;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 24px rgba(230,179,37,0.3);
         }
     </style>
 </head>
@@ -198,9 +201,9 @@
         </div>
 
         <!-- 404 Text -->
-        <h1 class="text-9xl font-serif font-black text-accent mb-4 tracking-tighter">404</h1>
+        <h1 class="text-9xl font-serif font-medium text-accent mb-4 tracking-tighter">404</h1>
         
-        <h2 class="text-3xl md:text-4xl font-bold text-primary-text mb-6">
+        <h2 class="text-4xl md:text-6xl font-medium text-primary-text mb-6">
             Service Not Found
         </h2>
         
@@ -223,7 +226,7 @@
 
         <!-- Small Footer Link -->
         <div class="mt-16">
-            <a href="index.html" class="text-sm font-serif font-extrabold tracking-tight hover:opacity-80 transition-opacity">
+            <a href="index.html" class="text-sm font-serif font-medium tracking-tight hover:opacity-80 transition-opacity">
                 <span style="color: #E6B325;">TRIMZO</span>
             </a>
         </div>
