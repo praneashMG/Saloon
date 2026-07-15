@@ -8,182 +8,7 @@
     <title>Barbershop &amp; Men's Grooming Salon | TRIMZO</title>
 
 <script src="tailwind.js"></script>
-    <style>
-        /* --- Refined Premium Green & Rich Brown Palette --- */
-        :root, html[data-theme='light'] {
-            --color-background: #FFFFFF;
-            --color-primary-text: #5C4033; 
-            --color-secondary-text: #5C4033; /* Neat Rich Brown */
-            --color-accent: #E6B325; /* Lawn Green */
-            --color-accent-light: #5C4033; /* Rich Brown */
-            --color-border: #E5E7EB; 
-            --color-hover: #FFF8E6; 
-            --color-footer-bg: #5C4033;
-            --color-footer-text: #EAEAEA; 
-        }
-        html[data-theme='dark'] {
-            --color-background: #000000;
-            --color-primary-text: #FFFFFF;
-            --color-secondary-text: #D7CCC8;
-            --color-accent: #E6B325; 
-            --color-accent-light: #BCAAA4; 
-            --color-border: #374151; 
-            --color-hover: #2B1D16;
-            --color-footer-bg: #000000;
-            --color-footer-text: #FFFFFF;
-        }
-        
-        body {
-            background-color: var(--color-background);
-            color: var(--color-primary-text);
-            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-            transition: background-color 0.3s, color 0.3s;
-            overflow-x: hidden;
-        }
-        
-        .text-primary-text { color: var(--color-primary-text); }
-        .text-secondary-text { color: var(--color-secondary-text); }
-        .text-accent { color: var(--color-accent); }
-        .text-accent-light { color: var(--color-accent-light); }
-        .bg-background { background-color: var(--color-background); }
-        .bg-hover { background-color: var(--color-hover); }
-        .border-border { border-color: var(--color-border); }
-
-        /* ── Typography Weight System ── */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 500 !important;
-        }
-        p, .text-secondary-text {
-            font-weight: 400 !important;
-        }
-
-        /* Rich Gradient */
-        .bg-custom-gradient {
-            background: linear-gradient(135deg, #E6B325 0%, #5C4033 100%);
-        }
-
-        #main-footer {
-            background-color: var(--color-footer-bg);
-            color: var(--color-footer-text);
-        }
-        #main-footer .footer-heading {
-            color: #E6B325 !important; /* Elegant Green Heading */
-        }
-        #main-footer .footer-link:hover {
-            color: #BCAAA4;
-            padding-left: 4px;
-            transition: all 0.2s ease;
-        }
-
-        /* Nav Link Underline */
-        .nav-link {
-            position: relative;
-            transition: color 0.3s;
-            padding-top: 0.25rem;
-            padding-bottom: 0.25rem;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            left: 0; right: 0; bottom: 0;
-            height: 2px;
-            background-color: var(--color-accent);
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-        .nav-link:hover::after {
-            transform: scaleX(1);
-        }
-
-        /* DROPDOWN */
-        .dropdown-wrapper { position: relative; }
-        .dropdown-menu {
-            position: absolute;
-            top: calc(100% + 5px);
-            left: 0;
-            background-color: var(--color-background);
-            border: 1px solid var(--color-border);
-            border-radius: 0.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            min-width: 220px;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-        .dropdown-wrapper:hover .dropdown-menu {
-            opacity: 1; visibility: visible; transform: translateY(0);
-            display: block;
-        }
-        .dropdown-menu a {
-            display: block;
-            padding: 0.75rem 1rem;
-            color: var(--color-primary-text);
-            text-decoration: none;
-            font-size: 0.875rem;
-            transition: all 0.2s ease;
-            border-bottom: 1px solid var(--color-border);
-        }
-        .dropdown-menu a:last-child { border-bottom: none; }
-        .dropdown-menu a:hover {
-            background-color: var(--color-hover);
-            color: var(--color-accent);
-            padding-left: 1.25rem;
-        }
-
-        @media (max-width: 1024px) {
-            .dropdown-menu { position: static; display: none; opacity: 1; visibility: visible; transform: none; box-shadow: none; }
-            .dropdown-wrapper:hover .dropdown-menu { display: block; }
-        }
-
-        /* ── Canonical Button System ── */
-        .btn-primary, .book-btn {
-            background: linear-gradient(135deg, #E6B325 0%, #5C4033 100%);
-            color: #FFFFFF !important;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .btn-primary:hover, .book-btn:hover {
-            background: linear-gradient(135deg, #d4a520 0%, #4a3328 100%);
-            transform: scale(1.04);
-            box-shadow: 0 8px 24px rgba(230,179,37,0.45);
-        }
-        .btn-outline {
-            background: transparent;
-            color: var(--color-accent);
-            border: 2px solid var(--color-accent);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .btn-outline:hover {
-            background: var(--color-accent);
-            color: #1a1a1a !important;
-            box-shadow: 0 6px 18px rgba(230,179,37,0.35);
-            transform: translateY(-1px);
-        }
-        html[data-theme='dark'] .btn-outline {
-            color: #E6B325;
-            border-color: #E6B325;
-        }
-        html[data-theme='dark'] .btn-outline:hover {
-            background: #E6B325;
-            color: #1a1a1a !important;
-            box-shadow: 0 6px 18px rgba(230,179,37,0.35);
-        }
-        .btn-cta-white {
-            background: white;
-            color: #E6B325;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .btn-cta-white:hover {
-            background: #E6B325;
-            color: #1a1a1a;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(230,179,37,0.3);
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/css/theme.css">
 </head>
 <body class="antialiased flex flex-col min-h-screen">
 
@@ -241,9 +66,9 @@
     </header>
 
     <main class="flex-grow">
-      <!-- SECTION 1: THE MUSEUM HERO -->
-<!-- SECTION 1: THE MUSEUM HERO -->
-<section class="relative flex items-center overflow-hidden bg-background pt-10 pb-10 md:pt-14 md:pb-14">
+      <!-- SECTION 1: THE HERO -->
+<!-- SECTION 1: THE HERO -->
+<section class="relative flex items-center overflow-hidden bg-background py-16 lg:py-24">
 
     <!-- Background Blur -->
     <div class="absolute inset-0 pointer-events-none">
@@ -257,7 +82,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[75vh]">
 
             <!-- LEFT CONTENT -->
-            <div class="ltr:text-left rtl:text-right">
+            <div class="text-center md:ltr:text-left md:rtl:text-right">
 
                 <!-- Tag -->
                 <span class="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent font-bold text-xs uppercase tracking-[0.2em] mb-5">
@@ -267,23 +92,23 @@
                 <!-- Heading -->
                 <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight text-primary-text mb-5 leading-[1.05]">
 
-                    Fossil &
+                    Masterful Cuts &
                     <span class="text-accent italic font-serif">
-                        Mineral
+                        Grooming
                     </span>
 
                     <br>
 
-                    Service Dealer
+                    For Gentlemen
 
                 </h1>
 
                 <!-- Description -->
                 <p class="text-secondary-text text-base md:text-lg leading-relaxed max-w-xl mb-8">
 
-                    Curating Earth’s most silent storytellers.
-                    From Mesozoic giants to rare crystalline structures,
-                    we provide museum-grade pieces for the modern collector.
+                    Experience the pinnacle of men's grooming.
+                    From precision classic cuts to traditional hot towel shaves,
+                    we provide top-tier services for the modern gentleman.
 
                 </p>
 
@@ -334,8 +159,8 @@
 
 </section>
 
-<!-- SECTION 2: BENTO CATEGORY GRID -->
-<section class="py-24 bg-hover/10">
+<!-- SECTION 2: CATEGORY GRID -->
+<section class="py-24 bg-background-alt">
     <div class="container mx-auto px-6 lg:px-12">
         <div class="text-center max-w-2xl mx-auto mb-16">
             <h2 class="text-4xl md:text-6xl font-medium text-primary-text mb-4 leading-tight">Our Premium Services</h2>
@@ -372,20 +197,20 @@
         </div>
     </div>
 </section>
-<!-- SECTION 3: THE GEOLOGIC TIMELINE (UPDATED PREMIUM VERSION) -->
+<!-- SECTION 3: THE SERVICE TIMELINE -->
 <section class="py-24 bg-background">
     <div class="container mx-auto px-6">
         <div class="grid lg:grid-cols-3 gap-14 items-start">
 
             <!-- Left Content -->
-            <div class="lg:col-span-1 ltr:text-left rtl:text-right">
+            <div class="lg:col-span-1 text-center md:ltr:text-left md:rtl:text-right">
                 <span class="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-5 tracking-wide uppercase">
                     Our Expertise
                 </span>
 
                 <h2 class="text-4xl md:text-6xl font-medium leading-tight text-primary-text mb-6">
-                    Millions of Years <br>
-                    Preserved in Stone
+                    The Art of <br>
+                    Classic Grooming
                 </h2>
 
                 <p class="text-secondary-text text-lg leading-relaxed mb-8">
@@ -400,7 +225,7 @@
 
                         <div>
                             <p class="text-primary-text font-medium italic leading-relaxed">
-                                “Every fossil and mineral tells a story older than civilization itself.”
+                                “Every precise cut and clean shave tells a story of refined elegance.”
                             </p>
                         </div>
                     </div>
@@ -421,7 +246,7 @@
                     </h4>
 
                     <p class="text-secondary-text leading-relaxed">
-                        Rare teeth, claws, bones, and vertebrae from the mighty creatures that once ruled prehistoric Earth.
+                        Experience our signature classic haircuts tailored perfectly to your unique style and head shape.
                     </p>
                 </div>
 
@@ -432,11 +257,11 @@
                     </div>
 
                     <h4 class="text-2xl font-medium text-primary-text mb-4">
-                        Ancient Marine Life
+                        Traditional Hot Shave
                     </h4>
 
                     <p class="text-secondary-text leading-relaxed">
-                        Beautifully preserved trilobites, ammonites, and marine fossils dating back hundreds of millions of years.
+                        Relax with a classic straight razor shave complete with a soothing hot towel treatment.
                     </p>
                 </div>
 
@@ -447,18 +272,18 @@
                     </div>
 
                     <h4 class="text-2xl font-medium text-primary-text mb-4">
-                        Meteorite Collection
+                        Beard Sculpting
                     </h4>
 
                     <p class="text-secondary-text leading-relaxed">
-                        Authentic meteorites and cosmic fragments sourced from deserts and impact zones across the world.
+                        Keep your beard perfectly shaped and conditioned with our expert beard trimming services.
                     </p>
                 </div>
 
                 <!-- Card 4 -->
                 <div class="group p-8 rounded-3xl border border-border bg-background hover:border-accent hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
                     <div class="w-16 h-16 rounded-2xl bg-accent/10 text-accent flex items-center justify-center text-2xl mb-6 group-hover:bg-accent/20 transition-all duration-300">
-                        <i class="fas fa-gem"></i>
+                        <i class="fas fa-scissors"></i>
                     </div>
 
                     <h4 class="text-2xl font-medium text-primary-text mb-4">
@@ -475,8 +300,8 @@
     </div>
 </section>
 
-<!-- SECTION 4: THE PROVENANCE STANDARD (WHY CHOOSE US) -->
-<section class="py-24 bg-hover/10">
+<!-- SECTION 4: THE TRIMZO STANDARD (WHY CHOOSE US) -->
+<section class="py-24 bg-background-alt">
     <div class="container mx-auto px-6 lg:px-12">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div class="relative order-2 lg:order-1">
@@ -485,7 +310,7 @@
                 </div>
                 
             </div>
-            <div class="order-1 lg:order-2 ltr:text-left rtl:text-right">
+            <div class="order-1 lg:order-2 text-center md:ltr:text-left md:rtl:text-right">
                 <h2 class="text-4xl md:text-6xl font-medium text-primary-text mb-8">Excellence is Our <span class="text-accent">Standard</span></h2>
                 <ul class="space-y-6">
                     <li class="flex gap-4">
@@ -515,7 +340,7 @@
     </div>
 </section>
 
-<!-- SECTION 5: MASTERPIECE GALLERY (NEW) -->
+<!-- SECTION 5: BARBERSHOP GALLERY -->
 <section class="py-24 bg-background overflow-hidden">
     <div class="container mx-auto px-6">
         <div class="flex flex-col md:flex-row justify-between items-end mb-12">
@@ -561,8 +386,8 @@
     </div>
 </section>
 
-<!-- SECTION 6: THE COLLECTOR'S CIRCLE (TESTIMONIALS) -->
-<section class="py-24 bg-hover/5">
+<!-- SECTION 6: CLIENT TESTIMONIALS -->
+<section class="py-24 bg-background-alt">
     <div class="container mx-auto px-6 lg:px-12">
         <div class="text-center mb-12 lg:mb-16">
             <h2 class="text-4xl md:text-6xl font-medium text-primary-text mb-4">Client Testimonials</h2>
@@ -632,7 +457,7 @@
             </div>
             <nav class="flex flex-col space-y-2 py-4">
                 <div>
-                    <button class="block text-primary-text font-semibold text-lg py-2 w-full text-left flex justify-between items-center" id="mobile-homes-toggle">
+                    <button class="block text-primary-text font-semibold text-lg py-2 w-full ltr:text-left rtl:text-right flex justify-between items-center" id="mobile-homes-toggle">
                         Home <svg class="w-4 h-4 transform transition-transform duration-200 text-primary-text" id="homes-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div id="mobile-homes-menu" class="hidden pl-4 flex flex-col space-y-1 mt-1 border-l-2 border-border">
